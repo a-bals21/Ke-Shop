@@ -12,7 +12,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
- *Interfaz Gráfica para controlar el Software
+ * Interfaz Gráfica para controlar el Software
  * @author Erika Aguilar, Angel Balderas, Kevin Camelo
  */
 public class Ke_Shop extends Application {
