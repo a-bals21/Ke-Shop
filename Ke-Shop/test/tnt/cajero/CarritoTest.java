@@ -44,12 +44,11 @@ public class CarritoTest {
     @Test
     public void testAddProducto() {
         System.out.println("addProducto");
-        Publicacion producto = null;
-        int cantidad = 0;
+        Publicacion producto = new Publicacion("Coca",32d,"No retornable");
+        int cantidad = 1;
         Carrito instance = new Carrito();
         instance.addProducto(producto, cantidad);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        fail("Producto no añadino");
     }
 
     /**
@@ -58,11 +57,10 @@ public class CarritoTest {
     @Test
     public void testDeleteProducto() {
         System.out.println("deleteProducto");
-        int index = 0;
+        int index = -1;
         Carrito instance = new Carrito();
         instance.deleteProducto(index);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        fail("Producto no borrado");
     }
 
     /**

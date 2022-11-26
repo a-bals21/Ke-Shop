@@ -12,13 +12,11 @@ public class Cajero {
     CajaRegistradora caja;
     Carrito carro;
     Ticket ticket;
-    Token tocken;
 
-    public Cajero(CajaRegistradora caja, Carrito carro, Ticket ticket, Token tocken) {
+    public Cajero(CajaRegistradora caja, Carrito carro, Ticket ticket) {
         this.caja = caja;
         this.carro = carro;
         this.ticket = ticket;
-        this.tocken = tocken;
     }
     
     

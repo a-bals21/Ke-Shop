@@ -12,11 +12,16 @@ import tnt.publicacion.*;
  * @author Angel Balderas
  */
 public class Carrito {
-    private ArrayList<Publicacion> listaProductos = new ArrayList<>();
-    private ArrayList<Integer> cantidades = new ArrayList<>();
+    private static ArrayList<Publicacion> listaProductos = new ArrayList<>();
+    private static ArrayList<Integer> cantidades = new ArrayList<>();
     private double precioTotal = 0;
     private double cambio = 0;
     private double pago = 0;
+
+    public Carrito() {
+    }
+    
+    
     
     /**
      * Añadir un producto y su cantidad al carrito

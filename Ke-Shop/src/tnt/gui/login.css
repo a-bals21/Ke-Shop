@@ -1,0 +1,76 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+}
+
+* {
+    -fx-primary-color: #fafafa;
+    -fx-secondary-color: #ff8080;
+    -fx-tercary-color: #dd3030;
+    -fx-grey-color: #b9b9b9;
+    -fx-black-color: #242424;
+}
+
+
+/*ICONOS*/
+.user-icon {
+    -fx-background-color: -fx-secondary-color;
+    -fx-shape: "M272 304h-96C78.8 304 0 382.8 0 480c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32C448 382.8 369.2 304 272 304zM48.99 464C56.89 400.9 110.8 352 176 352h96c65.16 0 119.1 48.95 127 112H48.99zM224 256c70.69 0 128-57.31 128-128c0-70.69-57.31-128-128-128S96 57.31 96 128C96 198.7 153.3 256 224 256zM224 48c44.11 0 80 35.89 80 80c0 44.11-35.89 80-80 80S144 172.1 144 128C144 83.89 179.9 48 224 48z";
+}
+
+.xmark-button {
+    -fx-fill: -fx-primary-color;
+    -fx-shape: "M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z";
+}
+
+/*FORMATO DE TEXTOS*/
+.titulo-w {
+    -fx-font-size: 25;
+    -fx-text-fill:  #fafafa;
+    -fx-font-weight: bold;
+}
+
+/*TEXTFIELDS*/
+.campotexto {
+    -fx-background-color: -fx-black-color, -fx-secondary-color;
+    -fx-text-fill: -fx-primary-color;
+    -fx-cursor: TEXT;
+    -fx-font-weight: 300;
+    -fx-background-insets: 0, 1;
+    -fx-background-radius: 0;
+    -fx-prompt-text-fill: -fx-tercary-color;
+    -fx-focus-traversable: true;
+}
+
+.campotexto:focused {
+    -fx-background-color: -fx-secondary-color, white;
+    -fx-text-fill: -fx-black-color;
+    -fx-font-weight: 0;
+    -fx-accent-color: none;
+    -fx-prompt-text-fill: -fx-secondary-color;
+}
+
+/*BOTONES*/
+.botones {
+    -fx-font-weight: bold;
+    -fx-background-color: -fx-primary-color;
+    -fx-text-fill: -fx-black-color;
+    -fx-padding: 5;
+    -fx-border: none;
+}
+
+.botones:hover {
+    -fx-background-color: -fx-secondary-color;
+    -fx-text-fill: -fx-primary-color;
+    -fx-cursor: HAND;
+}
+
+.botones:focused {
+    -fx-border-color: -fx-tercary-color;
+}
+/*FONDOS*/
+#header {
+    -fx-background-color: -fx-secondary-color;
+}
