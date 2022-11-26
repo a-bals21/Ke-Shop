@@ -17,8 +17,8 @@ import javafx.stage.Stage;
  */
 public class Main extends Application {
     
-    Parent root;
-    Scene escena;
+    Parent root = null;
+    Scene escena = null;
     
     //Se ejecuta al intanciarse la escena (Configuración inicial)
     @Override
@@ -28,10 +28,12 @@ public class Main extends Application {
     
     @Override
     public void start(Stage primaryStage) throws IOException {
+        
         root = FXMLLoader.load(getClass().getResource("/tnt/gui/Login.fxml"));
-        escena = new Scene(root, 1020, 547);
+        escena = new Scene(root);
         
         primaryStage.setScene(escena);
+        primaryStage.setMaximized(true);
         primaryStage.setTitle("Ke-Shop");
         primaryStage.show();
     }

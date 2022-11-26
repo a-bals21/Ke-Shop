@@ -19,7 +19,7 @@
         <URL value="@login.css" />
     </stylesheets>
    <children>
-      <VBox id="back" fx:id="back" alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox id="back" alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <BorderPane id="header" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" VBox.vgrow="NEVER">
                <center>
@@ -33,7 +33,7 @@
                               <Cursor fx:constant="DEFAULT" />
                            </cursor>
                         </Label>
-                        <Button id="close" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#closeWindow" prefHeight="25.0" prefWidth="25.0" scaleX="0.43" textAlignment="CENTER" wrapText="true" HBox.hgrow="NEVER">
+                        <Button id="close" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#cerrarVentana" prefHeight="25.0" prefWidth="25.0" textAlignment="CENTER" wrapText="true" HBox.hgrow="NEVER">
                            <styleClass>
                               <String fx:value="xmark-button" />
                               <String fx:value="botones" />
