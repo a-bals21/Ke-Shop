@@ -9,51 +9,30 @@ package tnt.publicacion;
  * @author Erika Aguilar
  */
 public class PublicacionExterna extends Publicacion {
-    private String token;
-    private String nomCliente;
-    private String telCliente;
-    private String claveElectorCliente;
-
-    public PublicacionExterna(String token, String nomCliente, String telCliente, String claveElectorCliente, String nombre, double precio, String descripción) {
-        super(nombre, precio, descripción);
-        this.token = token;
-        this.nomCliente = nomCliente;
-        this.telCliente = telCliente;
-        this.claveElectorCliente = claveElectorCliente;
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
-    }
-
-    public String getNomCliente() {
-        return nomCliente;
-    }
-
-    public void setNomCliente(String nomCliente) {
-        this.nomCliente = nomCliente;
-    }
-
-    public String getTelCliente() {
-        return telCliente;
-    }
-
-    public void setTelCliente(String telCliente) {
-        this.telCliente = telCliente;
-    }
-
-    public String getClaveElectorCliente() {
-        return claveElectorCliente;
-    }
-
-    public void setClaveElectorCliente(String claveElectorCliente) {
-        this.claveElectorCliente = claveElectorCliente;
-    }
     
-    
+    private String telefono;
+    private String claveElector;
+
+    public PublicacionExterna(String telefono, String claveElector, String name, double precio, String codigo, String descripcion) {
+        super(name, precio, codigo, descripcion);
+        this.telefono = telefono;
+        this.claveElector = claveElector;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public String getClaveElector() {
+        return claveElector;
+    }
+
+    public void setClaveElector(String claveElector) {
+        this.claveElector = claveElector;
+    }
     
 }

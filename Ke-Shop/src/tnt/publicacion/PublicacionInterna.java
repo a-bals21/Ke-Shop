@@ -9,20 +9,9 @@ package tnt.publicacion;
  * @author Erika Aguilar
  */
 public class PublicacionInterna extends Publicacion {
-    private String codigo;
-
-    public PublicacionInterna(String codigo, String nombre, double precio, String descripción) {
-        super(nombre, precio, descripción);
-        this.codigo = codigo;
-    }
-
-    public String getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
-    }
     
+    public PublicacionInterna(String name, double precio, String codigo, String descripcion) {
+        super(name, precio, codigo, descripcion);
+    }
     
 }

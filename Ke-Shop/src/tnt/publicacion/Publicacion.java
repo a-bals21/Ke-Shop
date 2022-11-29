@@ -9,22 +9,27 @@ package tnt.publicacion;
  * @author Erika Aguilar
  */
 public class Publicacion {
-    private String nombre;
+    
+    private String name;
     private double precio;
+    private String codigo;
     private String descripcion;
-
-    public Publicacion(String nombre, double precio, String descripción) {
-        this.nombre = nombre;
+    private int cantidad;
+    
+    public Publicacion(String name, double precio, String codigo, String descripcion) {
+        this.name = name;
         this.precio = precio;
-        this.descripcion = descripción;
+        this.codigo = codigo;
+        this.descripcion = descripcion;
+        this.cantidad = 0;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getName() {
+        return name;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public double getPrecio() {
@@ -35,13 +40,28 @@ public class Publicacion {
         this.precio = precio;
     }
 
-    public String getDescripción() {
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+
+    public String getDescripcion() {
         return descripcion;
     }
 
-    public void setDescripción(String descripción) {
-        this.descripcion = descripción;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
-    
+
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
     
 }

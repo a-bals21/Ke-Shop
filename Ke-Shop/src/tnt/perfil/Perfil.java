@@ -9,41 +9,42 @@ package tnt.perfil;
  * @author Angel Balderas
  */
 public class Perfil {
-    private String nombre;
-    private String usuario;
-    private String contrasenia;
+    private String name;
+    private String user;
+    private String password;
 
-    public Perfil(String nombre, String usuario, String contrasenia) {
-        this.nombre = nombre;
-        this.usuario = usuario;
-        this.contrasenia = contrasenia;
+    public Perfil(String name, String user, String password) {
+        this.name = name;
+        this.user = user;
+        this.password = password;
     }
 
     public String getNombre() {
-        return nombre;
+        return name;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNombre(String name) {
+        this.name = name;
     }
 
     public String getUsuario() {
-        return usuario;
+        return user;
     }
 
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setUsuario(String user) {
+        this.user = user;
     }
 
     public String getContrasenia() {
-        return contrasenia;
+        return password;
     }
 
-    public void setContrasenia(String contrasenia) {
-        this.contrasenia = contrasenia;
+    public void setContrasenia(String password) {
+        this.password = password;
     }
     
-    public boolean compararContrasenia(String contrasenia) {
-        return contrasenia.equals(this.contrasenia);
+    public boolean compararContrasenia(String password) {
+        return password.equals(this.password);
     }
+    
 }

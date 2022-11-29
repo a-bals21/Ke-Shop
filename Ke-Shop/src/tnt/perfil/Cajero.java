@@ -9,9 +9,9 @@ package tnt.perfil;
  * @author Angel Balderas
  */
 public class Cajero extends Perfil {
-    
-    public Cajero(String nombre, String usuario, String contrasenia) {
-        super(nombre, usuario, contrasenia);
+
+    public Cajero(String name, String user, String password) {
+        super(name, user, password);
     }
     
 }

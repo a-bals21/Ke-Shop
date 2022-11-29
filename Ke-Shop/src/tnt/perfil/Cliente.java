@@ -9,9 +9,9 @@ package tnt.perfil;
  * @author Angel Balderas
  */
 public class Cliente extends Perfil {
-    
-    public Cliente(String nombre, String usuario, String contrasenia) {
-        super(nombre, usuario, contrasenia);
+
+    public Cliente(String name, String user, String password) {
+        super(name, user, password);
     }
     
 }
