@@ -12,8 +12,8 @@ public class PublicacionExterna extends Publicacion {
     
     private String telefono;
     private String claveElector;
-
-    public PublicacionExterna(String telefono, String claveElector, String name, double precio, String codigo, String descripcion) {
+    
+    public PublicacionExterna(String name, double precio, String codigo, String descripcion, String telefono, String claveElector) {
         super(name, precio, codigo, descripcion);
         this.telefono = telefono;
         this.claveElector = claveElector;

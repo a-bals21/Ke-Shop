@@ -1,12 +1,11 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit5TestClass.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit4TestClass.java to edit this template
  */
 package tnt.publicacion;
 
-import static junit.framework.Assert.assertEquals;
-import static org.junit.Assert.fail;
 import org.junit.Test;
+import static org.junit.Assert.*;
 
 /**
  *
@@ -14,132 +13,99 @@ import org.junit.Test;
  */
 public class PublicacionTest {
     
-    //private final Publicacion objTest = new Publicacion("Refresco",27,"2121563","No retornable");
+    private final Publicacion objTest = new Publicacion("Coca",29d,"242424","No retornable");
     
+    public PublicacionTest() {
+    }
 
-    /**
-     * Test of getName method, of class Publicacion.
-     */
     @Test
     public void testGetName() {
         System.out.println("getName");
-        Publicacion instance = new Publicacion("Refresco",27,"2121563","No retornable");
-        String expResult = "Refresco";
+        Publicacion instance = objTest;
+        String expResult = "Coca";
         String result = instance.getName();
-        assertEquals("Test getName",expResult, result);
-        //fail("Test getName error");
+        assertEquals("Resultado no esperado",expResult, result);
     }
 
-    /**
-     * Test of setName method, of class Publicacion.
-     */
     @Test
     public void testSetName() {
         System.out.println("setName");
         String name = "";
-        Publicacion instance = null;
+        Publicacion instance = new Publicacion("",0d,"","");
         instance.setName(name);
-        //fail("Test setName error");
+        assertEquals("Resultado no esperado",name, instance.getName());
     }
 
-    /**
-     * Test of getPrecio method, of class Publicacion.
-     */
     @Test
     public void testGetPrecio() {
         System.out.println("getPrecio");
-        Publicacion instance = new Publicacion("Refresco",27,"2121563","No retornable");
-        double expResult = 27d;
+        Publicacion instance = objTest;
+        double expResult = 29d;
         double result = instance.getPrecio();
-        assertEquals(expResult, result, 0);
-        //fail("Test getPrecio error");
+        assertEquals("Resultado no esperado",expResult, result, 0);
     }
 
-    /**
-     * Test of setPrecio method, of class Publicacion.
-     */
     @Test
     public void testSetPrecio() {
         System.out.println("setPrecio");
-        double precio = 0.0;
-        Publicacion instance = null;
+        double precio = 27.0;
+        Publicacion instance = new Publicacion("",0d,"","");
         instance.setPrecio(precio);
-       // fail("Test setPrecio error");
+        assertEquals("Resultado no esperado",precio, instance.getPrecio(), 0);
     }
 
-    /**
-     * Test of getCodigo method, of class Publicacion.
-     */
     @Test
     public void testGetCodigo() {
         System.out.println("getCodigo");
-        Publicacion instance = new Publicacion("Refresco",27,"2121563","No retornable");
-        String expResult = "2121563";
+        Publicacion instance = objTest;
+        String expResult = "242424";
         String result = instance.getCodigo();
-        assertEquals(expResult, result);
-        //fail("Test getCodigo error");
+        assertEquals("Resultado no esperado",expResult, result);
     }
 
-    /**
-     * Test of setCodigo method, of class Publicacion.
-     */
     @Test
     public void testSetCodigo() {
         System.out.println("setCodigo");
         String codigo = "";
-        Publicacion instance = null;
+        Publicacion instance = new Publicacion("",0d,"","");
         instance.setCodigo(codigo);
-        //fail("Test setCodigo error");
+        assertEquals("Resultado no esperado",codigo, instance.getCodigo());
     }
 
-    /**
-     * Test of getDescripcion method, of class Publicacion.
-     */
     @Test
     public void testGetDescripcion() {
         System.out.println("getDescripcion");
-        Publicacion instance = new Publicacion("Refresco",27,"2121563","No retornable");
+        Publicacion instance = objTest;
         String expResult = "No retornable";
         String result = instance.getDescripcion();
-        assertEquals(expResult, result);
-        //fail("Test getDescripcion error");
+        assertEquals("Resultado no esperado",expResult, result);
     }
 
-    /**
-     * Test of setDescripcion method, of class Publicacion.
-     */
     @Test
     public void testSetDescripcion() {
         System.out.println("setDescripcion");
         String descripcion = "";
-        Publicacion instance = null;
+        Publicacion instance = new Publicacion("",0d,"","");
         instance.setDescripcion(descripcion);
-        //fail("Test setDescripcion error");
+        assertEquals("Resultado no esperado",descripcion, instance.getDescripcion());
     }
 
-    /**
-     * Test of getCantidad method, of class Publicacion.
-     */
     @Test
     public void testGetCantidad() {
         System.out.println("getCantidad");
-        Publicacion instance = new Publicacion("Refresco",27,"2121563","No retornable");
+        Publicacion instance = objTest;
         int expResult = 0;
         int result = instance.getCantidad();
-        assertEquals(expResult, result);
-        //fail("Test getCantidad Error");
+        assertEquals("Resultado no esperado",expResult, result);
     }
 
-    /**
-     * Test of setCantidad method, of class Publicacion.
-     */
     @Test
     public void testSetCantidad() {
         System.out.println("setCantidad");
         int cantidad = 0;
-        Publicacion instance = null;
+        Publicacion instance = new Publicacion("",0d,"","");
         instance.setCantidad(cantidad);
-        //fail("Test setCantidad error");
+        assertEquals("Resultado no esperado",cantidad, instance.getCantidad(), 0);
     }
     
 }

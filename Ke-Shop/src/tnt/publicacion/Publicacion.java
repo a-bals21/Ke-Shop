@@ -15,7 +15,7 @@ public class Publicacion {
     private String codigo;
     private String descripcion;
     private int cantidad;
-    
+        
     public Publicacion(String name, double precio, String codigo, String descripcion) {
         this.name = name;
         this.precio = precio;
