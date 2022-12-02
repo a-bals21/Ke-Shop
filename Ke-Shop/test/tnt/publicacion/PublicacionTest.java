@@ -30,7 +30,7 @@ public class PublicacionTest {
     @Test
     public void testSetName() {
         System.out.println("setName");
-        String name = "";
+        String name = "Papel";
         Publicacion instance = new Publicacion("",0d,"","");
         instance.setName(name);
         assertEquals("Resultado no esperado",name, instance.getName());

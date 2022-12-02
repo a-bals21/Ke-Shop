@@ -33,7 +33,7 @@
                               <Cursor fx:constant="DEFAULT" />
                            </cursor>
                         </Label>
-                        <Button id="close" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" textAlignment="CENTER" wrapText="true" HBox.hgrow="NEVER">
+                        <Button id="close" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#clickSalir" prefHeight="25.0" prefWidth="25.0" textAlignment="CENTER" wrapText="true" HBox.hgrow="NEVER">
                            <styleClass>
                               <String fx:value="xmark-button" />
                               <String fx:value="botones" />
@@ -97,7 +97,7 @@
                   </VBox>
                </center>
                <bottom>
-                  <HBox alignment="BOTTOM_RIGHT" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                  <HBox alignment="BOTTOM_RIGHT" maxHeight="-Infinity" prefHeight="50.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <children>
                         <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="20.0" prefWidth="20.0" styleClass="bacon-icon">
                            <cursor>

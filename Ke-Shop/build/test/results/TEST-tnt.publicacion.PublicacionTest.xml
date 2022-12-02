@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="DESKTOP-2J79565" name="tnt.publicacion.PublicacionTest" skipped="0" tests="10" time="0.583" timestamp="2022-11-30T02:19:52">
+<testsuite errors="0" failures="0" hostname="DESKTOP-6ROPAV6" name="tnt.publicacion.PublicacionTest" skipped="0" tests="1" time="0.46" timestamp="2022-12-02T18:42:57">
   <properties>
     <property name="libs.spring-framework300.classpath" value="C:\Program Files\NetBeans-15\netbeans\platform\modules\org-apache-commons-logging.jar;C:\Program Files\NetBeans-15\netbeans\java\modules\ext\cglib-2.2.jar;C:\Program Files\NetBeans-15\netbeans\java\modules\ext\spring-3.0\spring-aop-3.2.18.RELEASE.jar;C:\Program Files\NetBeans-15\netbeans\java\modules\ext\spring-3.0\spring-aspects-3.2.18.RELEASE.jar;C:\Program Files\NetBeans-15\netbeans\java\modules\ext\spring-3.0\spring-beans-3.2.18.RELEASE.jar;C:\Program Files\NetBeans-15\netbeans\java\modules\ext\spring-3.0\spring-context-3.2.18.RELEASE.jar;C:\Program Files\NetBeans-15\netbeans\java\modules\ext\spring-3.0\spring-context-support-3.2.18.RELEASE.jar;C:\Program Files\NetBeans-15\netbeans\java\modules\ext\spring-3.0\spring-core-3.2.18.RELEASE.jar;C:\Program Files\NetBeans-15\netbeans\java\modules\ext\spring-3.0\spring-expression-3.2.18.RELEASE.jar;C:\Program Files\NetBeans-15\netbeans\java\modules\ext\spring-3.0\spring-instrument-3.2.18.RELEASE.jar;C:\Program Files\NetBeans-15\netbeans\java\modules\ext\spring-3.0\spring-instrument-tomcat-3.2.18.RELEASE.jar;C:\Program Files\NetBeans-15\netbeans\java\modules\ext\spring-3.0\spring-jdbc-3.2.18.RELEASE.jar;C:\Program Files\NetBeans-15\netbeans\java\modules\ext\spring-3.0\spring-jms-3.2.18.RELEASE.jar;C:\Program Files\NetBeans-15\netbeans\java\modules\ext\spring-3.0\spring-orm-3.2.18.RELEASE.jar;C:\Program Files\NetBeans-15\netbeans\java\modules\ext\spring-3.0\spring-oxm-3.2.18.RELEASE.jar;C:\Program Files\NetBeans-15\netbeans\java\modules\ext\spring-3.0\spring-struts-3.2.18.RELEASE.jar;C:\Program Files\NetBeans-15\netbeans\java\modules\ext\spring-3.0\spring-test-3.2.18.RELEASE.jar;C:\Program Files\NetBeans-15\netbeans\java\modules\ext\spring-3.0\spring-tx-3.2.18.RELEASE.jar;C:\Program Files\NetBeans-15\netbeans\java\modules\ext\spring-3.0\spring-web-3.2.18.RELEASE.jar;C:\Program Files\NetBeans-15\netbeans\java\modules\ext\spring-3.0\spring-webmvc-3.2.18.RELEASE.jar;C:\Program Files\NetBeans-15\netbeans\java\modules\ext\spring-3.0\spring-webmvc-portlet-3.2.18.RELEASE.jar" />
     <property name="javac.test.classpath" value="C:\Program Files\Java\jdk-18.0.2\javafx-sdk-18.0.2\lib\javafx-swt.jar;C:\Program Files\Java\jdk-18.0.2\javafx-sdk-18.0.2\lib\javafx.base.jar;C:\Program Files\Java\jdk-18.0.2\javafx-sdk-18.0.2\lib\javafx.controls.jar;C:\Program Files\Java\jdk-18.0.2\javafx-sdk-18.0.2\lib\javafx.fxml.jar;C:\Program Files\Java\jdk-18.0.2\javafx-sdk-18.0.2\lib\javafx.graphics.jar;C:\Program Files\Java\jdk-18.0.2\javafx-sdk-18.0.2\lib\javafx.media.jar;C:\Program Files\Java\jdk-18.0.2\javafx-sdk-18.0.2\lib\javafx.swing.jar;C:\Program Files\Java\jdk-18.0.2\javafx-sdk-18.0.2\lib\javafx.web.jar:build/classes:C:\Program Files\NetBeans-15\netbeans\platform\modules\ext\junit-jupiter-api-5.6.0.jar;C:\Program Files\NetBeans-15\netbeans\platform\modules\ext\junit-jupiter-params-5.6.0.jar;C:\Program Files\NetBeans-15\netbeans\platform\modules\ext\junit-jupiter-engine-5.6.0.jar:C:\Program Files\NetBeans-15\netbeans\platform\modules\ext\junit-4.13.2.jar:C:\Program Files\NetBeans-15\netbeans\platform\modules\ext\hamcrest-core-1.3.jar" />
@@ -19,19 +19,18 @@
     <property name="libs.eclipselink.javadoc" value="C:\Program Files\NetBeans-15\netbeans\java\modules\ext\docs\jakarta.persistence-2.2.3-doc.zip" />
     <property name="libs.JWSAntTasks.javadoc" value="" />
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-18.0.2\bin" />
-    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner tnt.publicacion.PublicacionTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,C:\Users\alezx\OneDrive\Documentos\NetBeansProjects\Ke-Shop\Ke-Shop\build\test\results\TEST-tnt.publicacion.PublicacionTest.xml crashfile=C:\Users\alezx\OneDrive\Documentos\NetBeansProjects\Ke-Shop\Ke-Shop\build\junitvmwatcher17468919034807657317.properties propsfile=C:\Users\alezx\OneDrive\Documentos\NetBeansProjects\Ke-Shop\Ke-Shop\build\junit6256420792060960383.properties" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner tnt.publicacion.PublicacionTest methods=testSetName skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,C:\Users\ASUS\Documents\Tercer semestre\programacion orientada\Ke-Shop\Ke-Shop\Ke-Shop\Ke-Shop\Ke-Shop\build\test\results\TEST-tnt.publicacion.PublicacionTest.xml crashfile=C:\Users\ASUS\Documents\Tercer semestre\programacion orientada\Ke-Shop\Ke-Shop\Ke-Shop\Ke-Shop\Ke-Shop\build\junitvmwatcher2667165389297984675.properties propsfile=C:\Users\ASUS\Documents\Tercer semestre\programacion orientada\Ke-Shop\Ke-Shop\Ke-Shop\Ke-Shop\Ke-Shop\build\junit5454751039573308019.properties" />
     <property name="jdk.debug" value="release" />
     <property name="libs.spring-framework300.src" value="" />
     <property name="javadoc.use" value="true" />
     <property name="javadoc.notree" value="false" />
-    <property name="basedir" value="C:\Users\alezx\OneDrive\Documentos\NetBeansProjects\Ke-Shop\Ke-Shop" />
+    <property name="basedir" value="C:\Users\ASUS\Documents\Tercer semestre\programacion orientada\Ke-Shop\Ke-Shop\Ke-Shop\Ke-Shop\Ke-Shop" />
     <property name="application.vendor" value="" />
     <property name="java.specification.name" value="Java Platform API Specification" />
     <property name="java.vm.specification.vendor" value="Oracle Corporation" />
     <property name="libs.jsf20.classpath" value="C:\Program Files\NetBeans-15\netbeans\enterprise\modules\ext\jsf-2_2\javax.faces.jar" />
-    <property name="platforms.Oracle_OpenJDK_18.0.2.1_1.bootclasspath" value="C:\Users\alezx\OneDrive\Documentos\NetBeansJDKs\openjdk-18.0.2.1_windows-x64_bin\jdk-18.0.2.1\!/modules/java.base/;C:\Users\alezx\OneDrive\Documentos\NetBeansJDKs\openjdk-18.0.2.1_windows-x64_bin\jdk-18.0.2.1\!/modules/java.compiler/;C:\Users\alezx\OneDrive\Documentos\NetBeansJDKs\openjdk-18.0.2.1_windows-x64_bin\jdk-18.0.2.1\!/modules/java.datatransfer/;C:\Users\alezx\OneDrive\Documentos\NetBeansJDKs\openjdk-18.0.2.1_windows-x64_bin\jdk-18.0.2.1\!/modules/java.desktop/;C:\Users\alezx\OneDrive\Documentos\NetBeansJDKs\openjdk-18.0.2.1_windows-x64_bin\jdk-18.0.2.1\!/modules/java.instrument/;C:\Users\alezx\OneDrive\Documentos\NetBeansJDKs\openjdk-18.0.2.1_windows-x64_bin\jdk-18.0.2.1\!/modules/java.logging/;C:\Users\alezx\OneDrive\Documentos\NetBeansJDKs\openjdk-18.0.2.1_windows-x64_bin\jdk-18.0.2.1\!/modules/java.management/;C:\Users\alezx\OneDrive\Documentos\NetBeansJDKs\openjdk-18.0.2.1_windows-x64_bin\jdk-18.0.2.1\!/modules/java.management.rmi/;C:\Users\alezx\OneDrive\Documentos\NetBeansJDKs\openjdk-18.0.2.1_windows-x64_bin\jdk-18.0.2.1\!/modules/java.naming/;C:\Users\alezx\OneDrive\Documentos\NetBeansJDKs\openjdk-18.0.2.1_windows-x64_bin\jdk-18.0.2.1\!/modules/java.net.http/;C:\Users\alezx\OneDrive\Documentos\NetBeansJDKs\openjdk-18.0.2.1_windows-x64_bin\jdk-18.0.2.1\!/modules/java.prefs/;C:\Users\alezx\OneDrive\Documentos\NetBeansJDKs\openjdk-18.0.2.1_windows-x64_bin\jdk-18.0.2.1\!/modules/java.rmi/;C:\Users\alezx\OneDrive\Documentos\NetBeansJDKs\openjdk-18.0.2.1_windows-x64_bin\jdk-18.0.2.1\!/modules/java.scripting/;C:\Users\alezx\OneDrive\Documentos\NetBeansJDKs\openjdk-18.0.2.1_windows-x64_bin\jdk-18.0.2.1\!/modules/java.se/;C:\Users\alezx\OneDrive\Documentos\NetBeansJDKs\openjdk-18.0.2.1_windows-x64_bin\jdk-18.0.2.1\!/modules/java.security.jgss/;C:\Users\alezx\OneDrive\Documentos\NetBeansJDKs\openjdk-18.0.2.1_windows-x64_bin\jdk-18.0.2.1\!/modules/java.security.sasl/;C:\Users\alezx\OneDrive\Documentos\NetBeansJDKs\openjdk-18.0.2.1_windows-x64_bin\jdk-18.0.2.1\!/modules/java.smartcardio/;C:\Users\alezx\OneDrive\Documentos\NetBeansJDKs\openjdk-18.0.2.1_windows-x64_bin\jdk-18.0.2.1\!/modules/java.sql/;C:\Users\alezx\OneDrive\Documentos\NetBeansJDKs\openjdk-18.0.2.1_windows-x64_bin\jdk-18.0.2.1\!/modules/java.sql.rowset/;C:\Users\alezx\OneDrive\Documentos\NetBeansJDKs\openjdk-18.0.2.1_windows-x64_bin\jdk-18.0.2.1\!/modules/java.transaction.xa/;C:\Users\alezx\OneDrive\Documentos\NetBeansJDKs\openjdk-18.0.2.1_windows-x64_bin\jdk-18.0.2.1\!/modules/java.xml/;C:\Users\alezx\OneDrive\Documentos\NetBeansJDKs\openjdk-18.0.2.1_windows-x64_bin\jdk-18.0.2.1\!/modules/java.xml.crypto/;C:\Users\alezx\OneDrive\Documentos\NetBeansJDKs\openjdk-18.0.2.1_windows-x64_bin\jdk-18.0.2.1\!/modules/jdk.accessibility/;C:\Users\alezx\OneDrive\Documentos\NetBeansJDKs\openjdk-18.0.2.1_windows-x64_bin\jdk-18.0.2.1\!/modules/jdk.attach/;C:\Users\alezx\OneDrive\Documentos\NetBeansJDKs\openjdk-18.0.2.1_windows-x64_bin\jdk-18.0.2.1\!/modules/jdk.charsets/;C:\Users\alezx\OneDrive\Documentos\NetBeansJDKs\openjdk-18.0.2.1_windows-x64_bin\jdk-18.0.2.1\!/modules/jdk.compiler/;C:\Users\alezx\OneDrive\Documentos\NetBeansJDKs\openjdk-18.0.2.1_windows-x64_bin\jdk-18.0.2.1\!/modules/jdk.crypto.cryptoki/;C:\Users\alezx\OneDrive\Documentos\NetBeansJDKs\openjdk-18.0.2.1_windows-x64_bin\jdk-18.0.2.1\!/modules/jdk.crypto.ec/;C:\Users\alezx\OneDrive\Documentos\NetBeansJDKs\openjdk-18.0.2.1_windows-x64_bin\jdk-18.0.2.1\!/modules/jdk.crypto.mscapi/;C:\Users\alezx\OneDrive\Documentos\NetBeansJDKs\openjdk-18.0.2.1_windows-x64_bin\jdk-18.0.2.1\!/modules/jdk.dynalink/;C:\Users\alezx\OneDrive\Documentos\NetBeansJDKs\openjdk-18.0.2.1_windows-x64_bin\jdk-18.0.2.1\!/modules/jdk.editpad/;C:\Users\alezx\OneDrive\Documentos\NetBeansJDKs\openjdk-18.0.2.1_windows-x64_bin\jdk-18.0.2.1\!/modules/jdk.hotspot.agent/;C:\Users\alezx\OneDrive\Documentos\NetBeansJDKs\openjdk-18.0.2.1_windows-x64_bin\jdk-18.0.2.1\!/modules/jdk.httpserver/;C:\Users\alezx\OneDrive\Documentos\NetBeansJDKs\openjdk-18.0.2.1_windows-x64_bin\jdk-18.0.2.1\!/modules/jdk.incubator.foreign/;C:\Users\alezx\OneDrive\Documentos\NetBeansJDKs\openjdk-18.0.2.1_windows-x64_bin\jdk-18.0.2.1\!/modules/jdk.incubator.vector/;C:\Users\alezx\OneDrive\Documentos\NetBeansJDKs\openjdk-18.0.2.1_windows-x64_bin\jdk-18.0.2.1\!/modules/jdk.internal.ed/;C:\Users\alezx\OneDrive\Documentos\NetBeansJDKs\openjdk-18.0.2.1_windows-x64_bin\jdk-18.0.2.1\!/modules/jdk.internal.jvmstat/;C:\Users\alezx\OneDrive\Documentos\NetBeansJDKs\openjdk-18.0.2.1_windows-x64_bin\jdk-18.0.2.1\!/modules/jdk.internal.le/;C:\Users\alezx\OneDrive\Documentos\NetBeansJDKs\openjdk-18.0.2.1_windows-x64_bin\jdk-18.0.2.1\!/modules/jdk.internal.opt/;C:\Users\alezx\OneDrive\Documentos\NetBeansJDKs\openjdk-18.0.2.1_windows-x64_bin\jdk-18.0.2.1\!/modules/jdk.internal.vm.ci/;C:\Users\alezx\OneDrive\Documentos\NetBeansJDKs\openjdk-18.0.2.1_windows-x64_bin\jdk-18.0.2.1\!/modules/jdk.internal.vm.compiler/;C:\Users\alezx\OneDrive\Documentos\NetBeansJDKs\openjdk-18.0.2.1_windows-x64_bin\jdk-18.0.2.1\!/modules/jdk.internal.vm.compiler.management/;C:\Users\alezx\OneDrive\Documentos\NetBeansJDKs\openjdk-18.0.2.1_windows-x64_bin\jdk-18.0.2.1\!/modules/jdk.jartool/;C:\Users\alezx\OneDrive\Documentos\NetBeansJDKs\openjdk-18.0.2.1_windows-x64_bin\jdk-18.0.2.1\!/modules/jdk.javadoc/;C:\Users\alezx\OneDrive\Documentos\NetBeansJDKs\openjdk-18.0.2.1_windows-x64_bin\jdk-18.0.2.1\!/modules/jdk.jcmd/;C:\Users\alezx\OneDrive\Documentos\NetBeansJDKs\openjdk-18.0.2.1_windows-x64_bin\jdk-18.0.2.1\!/modules/jdk.jconsole/;C:\Users\alezx\OneDrive\Documentos\NetBeansJDKs\openjdk-18.0.2.1_windows-x64_bin\jdk-18.0.2.1\!/modules/jdk.jdeps/;C:\Users\alezx\OneDrive\Documentos\NetBeansJDKs\openjdk-18.0.2.1_windows-x64_bin\jdk-18.0.2.1\!/modules/jdk.jdi/;C:\Users\alezx\OneDrive\Documentos\NetBeansJDKs\openjdk-18.0.2.1_windows-x64_bin\jdk-18.0.2.1\!/modules/jdk.jdwp.agent/;C:\Users\alezx\OneDrive\Documentos\NetBeansJDKs\openjdk-18.0.2.1_windows-x64_bin\jdk-18.0.2.1\!/modules/jdk.jfr/;C:\Users\alezx\OneDrive\Documentos\NetBeansJDKs\openjdk-18.0.2.1_windows-x64_bin\jdk-18.0.2.1\!/modules/jdk.jlink/;C:\Users\alezx\OneDrive\Documentos\NetBeansJDKs\openjdk-18.0.2.1_windows-x64_bin\jdk-18.0.2.1\!/modules/jdk.jpackage/;C:\Users\alezx\OneDrive\Documentos\NetBeansJDKs\openjdk-18.0.2.1_windows-x64_bin\jdk-18.0.2.1\!/modules/jdk.jshell/;C:\Users\alezx\OneDrive\Documentos\NetBeansJDKs\openjdk-18.0.2.1_windows-x64_bin\jdk-18.0.2.1\!/modules/jdk.jsobject/;C:\Users\alezx\OneDrive\Documentos\NetBeansJDKs\openjdk-18.0.2.1_windows-x64_bin\jdk-18.0.2.1\!/modules/jdk.jstatd/;C:\Users\alezx\OneDrive\Documentos\NetBeansJDKs\openjdk-18.0.2.1_windows-x64_bin\jdk-18.0.2.1\!/modules/jdk.localedata/;C:\Users\alezx\OneDrive\Documentos\NetBeansJDKs\openjdk-18.0.2.1_windows-x64_bin\jdk-18.0.2.1\!/modules/jdk.management/;C:\Users\alezx\OneDrive\Documentos\NetBeansJDKs\openjdk-18.0.2.1_windows-x64_bin\jdk-18.0.2.1\!/modules/jdk.management.agent/;C:\Users\alezx\OneDrive\Documentos\NetBeansJDKs\openjdk-18.0.2.1_windows-x64_bin\jdk-18.0.2.1\!/modules/jdk.management.jfr/;C:\Users\alezx\OneDrive\Documentos\NetBeansJDKs\openjdk-18.0.2.1_windows-x64_bin\jdk-18.0.2.1\!/modules/jdk.naming.dns/;C:\Users\alezx\OneDrive\Documentos\NetBeansJDKs\openjdk-18.0.2.1_windows-x64_bin\jdk-18.0.2.1\!/modules/jdk.naming.rmi/;C:\Users\alezx\OneDrive\Documentos\NetBeansJDKs\openjdk-18.0.2.1_windows-x64_bin\jdk-18.0.2.1\!/modules/jdk.net/;C:\Users\alezx\OneDrive\Documentos\NetBeansJDKs\openjdk-18.0.2.1_windows-x64_bin\jdk-18.0.2.1\!/modules/jdk.nio.mapmode/;C:\Users\alezx\OneDrive\Documentos\NetBeansJDKs\openjdk-18.0.2.1_windows-x64_bin\jdk-18.0.2.1\!/modules/jdk.random/;C:\Users\alezx\OneDrive\Documentos\NetBeansJDKs\openjdk-18.0.2.1_windows-x64_bin\jdk-18.0.2.1\!/modules/jdk.sctp/;C:\Users\alezx\OneDrive\Documentos\NetBeansJDKs\openjdk-18.0.2.1_windows-x64_bin\jdk-18.0.2.1\!/modules/jdk.security.auth/;C:\Users\alezx\OneDrive\Documentos\NetBeansJDKs\openjdk-18.0.2.1_windows-x64_bin\jdk-18.0.2.1\!/modules/jdk.security.jgss/;C:\Users\alezx\OneDrive\Documentos\NetBeansJDKs\openjdk-18.0.2.1_windows-x64_bin\jdk-18.0.2.1\!/modules/jdk.unsupported/;C:\Users\alezx\OneDrive\Documentos\NetBeansJDKs\openjdk-18.0.2.1_windows-x64_bin\jdk-18.0.2.1\!/modules/jdk.unsupported.desktop/;C:\Users\alezx\OneDrive\Documentos\NetBeansJDKs\openjdk-18.0.2.1_windows-x64_bin\jdk-18.0.2.1\!/modules/jdk.xml.dom/;C:\Users\alezx\OneDrive\Documentos\NetBeansJDKs\openjdk-18.0.2.1_windows-x64_bin\jdk-18.0.2.1\!/modules/jdk.zipfs/" />
     <property name="netbeans.extbrowser.manual_chrome_plugin_install" value="yes" />
-    <property name="netbeans.default_userdir_root" value="C:\Users\alezx\AppData\Roaming\NetBeans" />
+    <property name="netbeans.default_userdir_root" value="C:\Users\ASUS\AppData\Roaming\NetBeans" />
     <property name="libs.spring-framework500.javadoc" value="" />
     <property name="libs.jsp-compilation-syscp.src" value="" />
     <property name="jdk.home" value="C:\Program Files\Java\jdk-18.0.2" />
@@ -41,7 +40,7 @@
     <property name="libs.JAXB-ENDORSED.javadoc" value="" />
     <property name="sun.java2d.noddraw" value="true" />
     <property name="sun.zip.disableMemoryMapping" value="true" />
-    <property name="jnidispatch.path" value="C:\Users\alezx\AppData\Local\Temp\jna-92899928\jna18314365748153944870.dll" />
+    <property name="jnidispatch.path" value="C:\Users\ASUS\AppData\Local\Temp\jna-2018896\jna2401069118944255720.dll" />
     <property name="libs.primefaces.javadoc" value="" />
     <property name="libs.jsp-compilation.javadoc" value="" />
     <property name="libs.jsf12.src" value="" />
@@ -50,12 +49,12 @@
     <property name="libs.junit_5.javadoc" value="C:\Program Files\NetBeans-15\netbeans\platform\docs\junit-jupiter-api-5.6.0-javadoc.jar;C:\Program Files\NetBeans-15\netbeans\platform\docs\junit-jupiter-params-5.6.0-javadoc.jar;C:\Program Files\NetBeans-15\netbeans\platform\docs\junit-jupiter-engine-5.6.0-javadoc.jar" />
     <property name="jnlp.enabled" value="false" />
     <property name="dist.archive.excludes" value="" />
-    <property name="java.io.tmpdir" value="C:\Users\alezx\AppData\Local\Temp\" />
+    <property name="java.io.tmpdir" value="C:\Users\ASUS\AppData\Local\Temp\" />
     <property name="java.version" value="18.0.2" />
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification" />
     <property name="libs.jakartaee-api-8.0.javadoc" value="C:\Program Files\NetBeans-15\netbeans\enterprise\docs\jakartaee8-doc-api.jar" />
     <property name="native.encoding" value="Cp1252" />
-    <property name="java.library.path" value="C:\Program Files\Java\jdk-18.0.2\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Python310\Scripts\;C:\Python310\;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Java\jdk8u345-b01\bin;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\Program Files\Airshipper\;C:\Users\alezx\AppData\Local\Microsoft\WindowsApps;C:\Program Files (x86)\Brackets\;C:\Users\alezx\AppData\Roaming\npm;C:\Users\alezx\AppData\Local\JetBrains\IntelliJ IDEA 2022.2.1\bin;;." />
+    <property name="java.library.path" value="C:\Program Files\Java\jdk-18.0.2\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Common Files\Oracle\Java\javapath;C:\ProgramData\Oracle\Java\javapath;C:\Program Files\Eclipse Adoptium\jdk-17.0.4.101-hotspot\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\dotnet\;C:\Program Files\Git\cmd;C:\Users\ASUS\AppData\Local\Microsoft\WindowsApps;C:\Users\ASUS\AppData\Local\GitHubDesktop\bin;C:\Users\ASUS\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\JetBrains\IntelliJ IDEA 2022.2.1\bin;;C:\ProgramData\ASUS\GitHubDesktop\bin;." />
     <property name="libs.hamcrest.src" value="" />
     <property name="java.vendor" value="Oracle Corporation" />
     <property name="libs.testng.javadoc" value="C:\Program Files\NetBeans-15\netbeans\platform\docs\testng-6.13.1-javadoc.jar" />
@@ -67,7 +66,6 @@
     <property name="libs.testng.maven-pom" value="" />
     <property name="jlink.additionalparam" value="" />
     <property name="org.openide.version" value="deprecated" />
-    <property name="test.includes" value="tnt/publicacion/PublicacionTest.java" />
     <property name="run.classpath" value="C:\Program Files\Java\jdk-18.0.2\javafx-sdk-18.0.2\lib\javafx-swt.jar;C:\Program Files\Java\jdk-18.0.2\javafx-sdk-18.0.2\lib\javafx.base.jar;C:\Program Files\Java\jdk-18.0.2\javafx-sdk-18.0.2\lib\javafx.controls.jar;C:\Program Files\Java\jdk-18.0.2\javafx-sdk-18.0.2\lib\javafx.fxml.jar;C:\Program Files\Java\jdk-18.0.2\javafx-sdk-18.0.2\lib\javafx.graphics.jar;C:\Program Files\Java\jdk-18.0.2\javafx-sdk-18.0.2\lib\javafx.media.jar;C:\Program Files\Java\jdk-18.0.2\javafx-sdk-18.0.2\lib\javafx.swing.jar;C:\Program Files\Java\jdk-18.0.2\javafx-sdk-18.0.2\lib\javafx.web.jar:build/classes" />
     <property name="libs.jaxb.src" value="" />
     <property name="sun.awt.enableExtraMouseButtons" value="true" />
@@ -87,7 +85,7 @@
     <property name="libs.spring-webmvc4.0.maven-pom" value="" />
     <property name="libs.JavaFX_18.classpath" value="C:\Program Files\Java\jdk-18.0.2\javafx-sdk-18.0.2\lib\javafx-swt.jar;C:\Program Files\Java\jdk-18.0.2\javafx-sdk-18.0.2\lib\javafx.base.jar;C:\Program Files\Java\jdk-18.0.2\javafx-sdk-18.0.2\lib\javafx.controls.jar;C:\Program Files\Java\jdk-18.0.2\javafx-sdk-18.0.2\lib\javafx.fxml.jar;C:\Program Files\Java\jdk-18.0.2\javafx-sdk-18.0.2\lib\javafx.graphics.jar;C:\Program Files\Java\jdk-18.0.2\javafx-sdk-18.0.2\lib\javafx.media.jar;C:\Program Files\Java\jdk-18.0.2\javafx-sdk-18.0.2\lib\javafx.swing.jar;C:\Program Files\Java\jdk-18.0.2\javafx-sdk-18.0.2\lib\javafx.web.jar" />
     <property name="libs.JAXB-ENDORSED.maven-pom" value="" />
-    <property name="user.home" value="C:\Users\alezx" />
+    <property name="user.home" value="C:\Users\ASUS" />
     <property name="libs.eclipselinkmodelgen.maven-pom" value="" />
     <property name="have.sources" value="true" />
     <property name="annotation.processing.processors.list" value="" />
@@ -144,11 +142,10 @@
     <property name="application.desc" value="Software de Cajero con Persistencia de datos" />
     <property name="mkdist.disabled" value="false" />
     <property name="libs.javaee-web-api-6.0.javadoc" value="C:\Program Files\NetBeans-15\netbeans\enterprise\docs\javaee-doc-api.jar" />
-    <property name="ant.file.Ke-Shop-impl" value="C:\Users\alezx\OneDrive\Documentos\NetBeansProjects\Ke-Shop\Ke-Shop\nbproject\build-impl.xml" />
+    <property name="ant.file.Ke-Shop-impl" value="C:\Users\ASUS\Documents\Tercer semestre\programacion orientada\Ke-Shop\Ke-Shop\Ke-Shop\Ke-Shop\Ke-Shop\nbproject\build-impl.xml" />
     <property name="libs.groovy-all.classpath" value="C:\Program Files\NetBeans-15\netbeans\groovy\modules\ext\groovy-3.0.8.jar;C:\Program Files\NetBeans-15\netbeans\groovy\modules\ext\groovy-ant-3.0.8.jar" />
     <property name="libs.javaee-api-7.0.maven-pom" value="" />
     <property name="libs.absolutelayout.javadoc" value="" />
-    <property name="platforms.Oracle_OpenJDK_18.0.2.1_1.home" value="C:\Users\alezx\OneDrive\Documentos\NetBeansJDKs\openjdk-18.0.2.1_windows-x64_bin\jdk-18.0.2.1" />
     <property name="module.build.classes.dir" value="build/classes" />
     <property name="annotation.processing.processor.options" value="" />
     <property name="libs.jaxb.maven-pom" value="" />
@@ -183,7 +180,7 @@
     <property name="libs.jpa20-persistence.src" value="" />
     <property name="libs.restapi.javadoc" value="" />
     <property name="endorsed.classpath" value="" />
-    <property name="javac.test.sourcepath" value="C:\Users\alezx\OneDrive\Documentos\NetBeansProjects\Ke-Shop\Ke-Shop\build\empty" />
+    <property name="javac.test.sourcepath" value="C:\Users\ASUS\Documents\Tercer semestre\programacion orientada\Ke-Shop\Ke-Shop\Ke-Shop\Ke-Shop\Ke-Shop\build\empty" />
     <property name="libs.spring-webmvc3.0.maven-pom" value="" />
     <property name="junit.selected.version" value="4" />
     <property name="includes" value="**" />
@@ -197,7 +194,7 @@
     <property name="javadoc.encoding" value="UTF-8" />
     <property name="libs.jsp-compilation-syscp.maven-pom" value="" />
     <property name="libs.jstl.src" value="" />
-    <property name="netbeans.hash.code" value="unique=NB_EXTIDE_JAVA_PHP_WEBCOMMON_WEBEE01e9a593d-cc92-4e0d-9ca5-55e46ad0a132_d9502250-d58e-4ccd-8450-fc00adc83b11" />
+    <property name="netbeans.hash.code" value="unique=NB_EXTIDE_JAVA_PHP_WEBCOMMON_WEBEE028f173a0-70d8-421d-accf-26d0404d52bf_aeb12dcc-0d1a-4229-81bc-a3962289fd03" />
     <property name="jlink.strip" value="false" />
     <property name="libs.spring-webmvc3.0.classpath" value="C:\Program Files\NetBeans-15\netbeans\java\modules\ext\spring-3.0\spring-webmvc-3.2.18.RELEASE.jar" />
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment" />
@@ -216,7 +213,7 @@
     <property name="libs.jsp-compilation-syscp.classpath" value="C:\Program Files\NetBeans-15\netbeans\extide\ant\lib\ant.jar;C:\Program Files\NetBeans-15\netbeans\enterprise\modules\ext\servlet3.1-jsp2.3-api.jar;C:\Program Files\NetBeans-15\netbeans\enterprise\modules\ext\glassfish-jspparser-4.0.jar;C:\Program Files\NetBeans-15\netbeans\enterprise\modules\ext\jstl-impl.jar;C:\Program Files\NetBeans-15\netbeans\enterprise\modules\ext\jsf-2_2\javax.faces.jar" />
     <property name="libs.jsp-compilation.classpath" value="C:\Program Files\NetBeans-15\netbeans\extide\ant\lib\ant.jar;C:\Program Files\NetBeans-15\netbeans\enterprise\modules\ext\servlet3.1-jsp2.3-api.jar;C:\Program Files\NetBeans-15\netbeans\enterprise\modules\ext\glassfish-jspparser-4.0.jar;C:\Program Files\NetBeans-15\netbeans\enterprise\modules\ext\jsf-2_2\javax.faces.jar;C:\Program Files\NetBeans-15\netbeans\enterprise\modules\ext\jstl-api.jar;C:\Program Files\NetBeans-15\netbeans\extide\ant\lib\ant-launcher.jar" />
     <property name="libs.javaee-api-6.0.classpath" value="C:\Program Files\NetBeans-15\netbeans\enterprise\modules\ext\javaee-api-6.0.jar" />
-    <property name="javac.includesfile.binary" value="C:\Users\alezx\OneDrive\Documentos\NetBeansProjects\Ke-Shop\Ke-Shop\null2067041742" />
+    <property name="javac.includesfile.binary" value="C:\Users\ASUS\Documents\Tercer semestre\programacion orientada\Ke-Shop\Ke-Shop\Ke-Shop\Ke-Shop\Ke-Shop\null626928270" />
     <property name="libs.javaee-api-7.0.classpath" value="C:\Program Files\NetBeans-15\netbeans\enterprise\modules\ext\javaee-api-7.0.jar" />
     <property name="sun.cpu.isalist" value="amd64" />
     <property name="libs.restapi.maven-pom" value="" />
@@ -236,7 +233,7 @@
     <property name="jdk.module.path" value="C:\Program Files\Java\jdk-18.0.2\javafx-sdk-18.0.2\lib" />
     <property name="java.version.date" value="2022-07-19" />
     <property name="java.home" value="C:\Program Files\Java\jdk-18.0.2" />
-    <property name="work.dir" value="C:\Users\alezx\OneDrive\Documentos\NetBeansProjects\Ke-Shop\Ke-Shop" />
+    <property name="work.dir" value="C:\Users\ASUS\Documents\Tercer semestre\programacion orientada\Ke-Shop\Ke-Shop\Ke-Shop\Ke-Shop\Ke-Shop" />
     <property name="javac.test.compilerargs" value="" />
     <property name="jna.boot.library.name" value="jnidispatch-nb" />
     <property name="libs.PostgreSQLDriver.classpath" value="C:\Program Files\NetBeans-15\netbeans\ide\modules\ext\postgresql-42.2.16.jar" />
@@ -257,19 +254,18 @@
     <property name="libs.javaee-web-api-7.0.classpath" value="C:\Program Files\NetBeans-15\netbeans\enterprise\modules\ext\javaee-web-api-7.0.jar" />
     <property name="file.encoding" value="UTF-8" />
     <property name="java.util.logging.config.class" value="org.netbeans.core.startup.TopLogging" />
-    <property name="https.nonProxyHosts" value="localhost|127.0.0.1|DESKTOP-2J79565" />
+    <property name="https.nonProxyHosts" value="localhost|127.0.0.1|DESKTOP-6ROPAV6" />
     <property name="libs.restlib.javadoc" value="" />
     <property name="libs.absolutelayout.classpath" value="C:\Program Files\NetBeans-15\netbeans\java\modules\ext\AbsoluteLayout.jar" />
     <property name="do.archive" value="true" />
     <property name="libs.struts.maven-pom" value="" />
-    <property name="built-jar.properties" value="C:\Users\alezx\OneDrive\Documentos\NetBeansProjects\Ke-Shop\Ke-Shop\build\built-jar.properties" />
+    <property name="built-jar.properties" value="C:\Users\ASUS\Documents\Tercer semestre\programacion orientada\Ke-Shop\Ke-Shop\Ke-Shop\Ke-Shop\Ke-Shop\build\built-jar.properties" />
     <property name="nb.native.filechooser" value="false" />
     <property name="libs.testng.src" value="" />
     <property name="libs.javaee-web-api-8.0.classpath" value="C:\Program Files\NetBeans-15\netbeans\enterprise\modules\ext\javaee-web-api-8.0.jar" />
     <property name="platform.active" value="default_platform" />
     <property name="manifest.file" value="manifest.mf" />
     <property name="sun.io.unicode.encoding" value="UnicodeLittle" />
-    <property name="platforms.Oracle_OpenJDK_18.0.2.1_1.compiler" value="modern" />
     <property name="libs.struts.javadoc" value="C:\Program Files\NetBeans-15\netbeans\enterprise\docs\struts-1.3.10-javadoc.zip" />
     <property name="default.javac.source" value="18" />
     <property name="libs.javaee-web-api-8.0.javadoc" value="C:\Program Files\NetBeans-15\netbeans\enterprise\docs\javaee-doc-api.jar" />
@@ -277,7 +273,6 @@
     <property name="libs.eclipselinkmodelgen.classpath" value="C:\Program Files\NetBeans-15\netbeans\java\modules\ext\eclipselink\org.eclipse.persistence.jpa.modelgen.processor-2.7.10.jar" />
     <property name="javac.systemmodulepath.cmd.line.arg" value="" />
     <property name="netbeans.buildnumber" value="15-387759c96ce1b891ec45ffaf524a53499455fe1a" />
-    <property name="php.global.include.path" value="" />
     <property name="endorsed.classpath.cmd.line.arg" value="" />
     <property name="libs.jpa20-persistence.maven-pom" value="" />
     <property name="libs.CopyLibs.maven-pom" value="" />
@@ -286,7 +281,7 @@
     <property name="libs.jakartaee-api-8.0.maven-pom" value="" />
     <property name="jdkBug6558476" value="false" />
     <property name="javadoc.author" value="false" />
-    <property name="http.nonProxyHosts" value="localhost|127.0.0.1|DESKTOP-2J79565" />
+    <property name="http.nonProxyHosts" value="localhost|127.0.0.1|DESKTOP-6ROPAV6" />
     <property name="main.class" value="tnt.controllers.Main" />
     <property name="libs.jsp-compilation-syscp.javadoc" value="" />
     <property name="source.encoding" value="UTF-8" />
@@ -301,7 +296,7 @@
     <property name="libs.graaljs.src" value="" />
     <property name="run.jvmargs" value="--module-path &quot;C:\Program Files\Java\jdk-18.0.2\javafx-sdk-18.0.2\lib&quot; --add-modules javafx.controls,javafx.fxml" />
     <property name="libs.primefaces.src" value="" />
-    <property name="ant.file" value="C:\Users\alezx\OneDrive\Documentos\NetBeansProjects\Ke-Shop\Ke-Shop\build.xml" />
+    <property name="ant.file" value="C:\Users\ASUS\Documents\Tercer semestre\programacion orientada\Ke-Shop\Ke-Shop\Ke-Shop\Ke-Shop\Ke-Shop\build.xml" />
     <property name="libs.struts.src" value="" />
     <property name="path.separator" value=";" />
     <property name="libs.JAXB-ENDORSED.classpath" value="C:\Program Files\NetBeans-15\netbeans\ide\modules\ext\jaxb\api\jaxb-api.jar" />
@@ -341,23 +336,24 @@
     <property name="jar.archive.disabled" value="false" />
     <property name="netbeans.importclass" value="org.netbeans.upgrade.AutoUpgrade" />
     <property name="netbeans.autoupdate.version" value="1.23" />
-    <property name="empty.dir" value="C:\Users\alezx\OneDrive\Documentos\NetBeansProjects\Ke-Shop\Ke-Shop\build\empty" />
-    <property name="netbeans.user" value="C:\Users\alezx\AppData\Roaming\NetBeans\15" />
-    <property name="javac.includes.binary" value="C:\Users\alezx\OneDrive\Documentos\NetBeansProjects\Ke-Shop\Ke-Shop\build\test\classes\tnt\publicacion\PublicacionTest.class" />
+    <property name="empty.dir" value="C:\Users\ASUS\Documents\Tercer semestre\programacion orientada\Ke-Shop\Ke-Shop\Ke-Shop\Ke-Shop\Ke-Shop\build\empty" />
+    <property name="netbeans.user" value="C:\Users\ASUS\AppData\Roaming\NetBeans\15" />
+    <property name="javac.includes.binary" value="C:\Users\ASUS\Documents\Tercer semestre\programacion orientada\Ke-Shop\Ke-Shop\Ke-Shop\Ke-Shop\Ke-Shop\build\test\classes\tnt\publicacion\PublicacionTest.class" />
     <property name="file.separator" value="\" />
     <property name="line.separator" value="&#xd;&#xa;" />
     <property name="javadoc.additionalparam" value="" />
     <property name="jnlp.signed" value="false" />
     <property name="libs.spring-webmvc5.0.classpath" value="C:\Program Files\NetBeans-15\netbeans\java\modules\ext\spring-5\spring-webmvc-5.2.9.RELEASE.jar" />
+    <property name="test.method" value="testSetName" />
     <property name="javac.debug" value="true" />
     <property name="libs.restlib.maven-pom" value="" />
     <property name="libs.testng.classpath" value="C:\Program Files\NetBeans-15\netbeans\platform\modules\ext\testng-6.14.3.jar;C:\Program Files\NetBeans-15\netbeans\platform\modules\ext\jcommander-1.78.jar" />
     <property name="libs.jsp-compiler.src" value="" />
-    <property name="user.name" value="alezx" />
+    <property name="user.name" value="ASUS" />
     <property name="build.classes.dir" value="build/classes" />
     <property name="javadoc.windowtitle" value="" />
-    <property name="nb.junit.single" value="false" />
-    <property name="nb.internal.action.name" value="run.single" />
+    <property name="nb.junit.single" value="true" />
+    <property name="nb.internal.action.name" value="run.single.method" />
     <property name="libs.javaee-api-8.0.maven-pom" value="" />
     <property name="libs.jaxws21.src" value="" />
     <property name="libs.jakartaee-web-api-9.0.javadoc" value="C:\Program Files\NetBeans-15\netbeans\enterprise\docs\jakartaee9-doc-api.jar" />
@@ -380,10 +376,10 @@
     <property name="javac.modulepath" value="" />
     <property name="libs.spring-framework500.src" value="" />
     <property name="libs.javaee-api-6.0.src" value="" />
-    <property name="user.properties.file" value="C:\Users\alezx\AppData\Roaming\NetBeans\15\build.properties" />
+    <property name="user.properties.file" value="C:\Users\ASUS\AppData\Roaming\NetBeans\15\build.properties" />
     <property name="javac.includes" value="tnt/publicacion/PublicacionTest.java" />
     <property name="netbeans.autoupdate.country" value="MX" />
-    <property name="java.class.path" value="C:\Program Files\Java\jdk-18.0.2\javafx-sdk-18.0.2\lib\javafx-swt.jar;C:\Program Files\Java\jdk-18.0.2\javafx-sdk-18.0.2\lib\javafx.base.jar;C:\Program Files\Java\jdk-18.0.2\javafx-sdk-18.0.2\lib\javafx.controls.jar;C:\Program Files\Java\jdk-18.0.2\javafx-sdk-18.0.2\lib\javafx.fxml.jar;C:\Program Files\Java\jdk-18.0.2\javafx-sdk-18.0.2\lib\javafx.graphics.jar;C:\Program Files\Java\jdk-18.0.2\javafx-sdk-18.0.2\lib\javafx.media.jar;C:\Program Files\Java\jdk-18.0.2\javafx-sdk-18.0.2\lib\javafx.swing.jar;C:\Program Files\Java\jdk-18.0.2\javafx-sdk-18.0.2\lib\javafx.web.jar;C:\Users\alezx\OneDrive\Documentos\NetBeansProjects\Ke-Shop\Ke-Shop\build\classes;C:\Program Files\NetBeans-15\netbeans\platform\modules\ext\junit-jupiter-api-5.6.0.jar;C:\Program Files\NetBeans-15\netbeans\platform\modules\ext\junit-jupiter-params-5.6.0.jar;C:\Program Files\NetBeans-15\netbeans\platform\modules\ext\junit-jupiter-engine-5.6.0.jar;C:\Program Files\NetBeans-15\netbeans\platform\modules\ext\junit-4.13.2.jar;C:\Program Files\NetBeans-15\netbeans\platform\modules\ext\hamcrest-core-1.3.jar;C:\Users\alezx\OneDrive\Documentos\NetBeansProjects\Ke-Shop\Ke-Shop\build\test\classes;C:\Program Files\NetBeans-15\netbeans\extide\ant\lib\ant-launcher.jar;C:\Program Files\NetBeans-15\netbeans\extide\ant\lib\ant.jar;C:\Program Files\NetBeans-15\netbeans\extide\ant\lib\ant-junit.jar;C:\Program Files\NetBeans-15\netbeans\extide\ant\lib\ant-junit4.jar" />
+    <property name="java.class.path" value="C:\Program Files\Java\jdk-18.0.2\javafx-sdk-18.0.2\lib\javafx-swt.jar;C:\Program Files\Java\jdk-18.0.2\javafx-sdk-18.0.2\lib\javafx.base.jar;C:\Program Files\Java\jdk-18.0.2\javafx-sdk-18.0.2\lib\javafx.controls.jar;C:\Program Files\Java\jdk-18.0.2\javafx-sdk-18.0.2\lib\javafx.fxml.jar;C:\Program Files\Java\jdk-18.0.2\javafx-sdk-18.0.2\lib\javafx.graphics.jar;C:\Program Files\Java\jdk-18.0.2\javafx-sdk-18.0.2\lib\javafx.media.jar;C:\Program Files\Java\jdk-18.0.2\javafx-sdk-18.0.2\lib\javafx.swing.jar;C:\Program Files\Java\jdk-18.0.2\javafx-sdk-18.0.2\lib\javafx.web.jar;C:\Users\ASUS\Documents\Tercer semestre\programacion orientada\Ke-Shop\Ke-Shop\Ke-Shop\Ke-Shop\Ke-Shop\build\classes;C:\Program Files\NetBeans-15\netbeans\platform\modules\ext\junit-jupiter-api-5.6.0.jar;C:\Program Files\NetBeans-15\netbeans\platform\modules\ext\junit-jupiter-params-5.6.0.jar;C:\Program Files\NetBeans-15\netbeans\platform\modules\ext\junit-jupiter-engine-5.6.0.jar;C:\Program Files\NetBeans-15\netbeans\platform\modules\ext\junit-4.13.2.jar;C:\Program Files\NetBeans-15\netbeans\platform\modules\ext\hamcrest-core-1.3.jar;C:\Users\ASUS\Documents\Tercer semestre\programacion orientada\Ke-Shop\Ke-Shop\Ke-Shop\Ke-Shop\Ke-Shop\build\test\classes;C:\Program Files\NetBeans-15\netbeans\extide\ant\lib\ant-launcher.jar;C:\Program Files\NetBeans-15\netbeans\extide\ant\lib\ant.jar;C:\Program Files\NetBeans-15\netbeans\extide\ant\lib\ant-junit.jar;C:\Program Files\NetBeans-15\netbeans\extide\ant\lib\ant-junit4.jar" />
     <property name="libs.javaee-web-api-6.0.maven-pom" value="" />
     <property name="java.vm.vendor" value="Oracle Corporation" />
     <property name="ap.supported.internal" value="true" />
@@ -402,7 +398,7 @@
     <property name="maven.defaultProjectBuilder.disableGlobalModelCache" value="true" />
     <property name="javadoc.nonavbar" value="false" />
     <property name="libs.javaee-api-8.0.src" value="" />
-    <property name="ant.file.Ke-Shop" value="C:\Users\alezx\OneDrive\Documentos\NetBeansProjects\Ke-Shop\Ke-Shop\build.xml" />
+    <property name="ant.file.Ke-Shop" value="C:\Users\ASUS\Documents\Tercer semestre\programacion orientada\Ke-Shop\Ke-Shop\Ke-Shop\Ke-Shop\Ke-Shop\build.xml" />
     <property name="ant.java.version" value="18" />
     <property name="libs.junit_4.classpath" value="C:\Program Files\NetBeans-15\netbeans\platform\modules\ext\junit-4.13.2.jar" />
     <property name="libs.jakartaee-api-9.0.javadoc" value="C:\Program Files\NetBeans-15\netbeans\enterprise\docs\jakartaee9-doc-api.jar" />
@@ -417,17 +413,17 @@
     <property name="javac.classpath" value="C:\Program Files\Java\jdk-18.0.2\javafx-sdk-18.0.2\lib\javafx-swt.jar;C:\Program Files\Java\jdk-18.0.2\javafx-sdk-18.0.2\lib\javafx.base.jar;C:\Program Files\Java\jdk-18.0.2\javafx-sdk-18.0.2\lib\javafx.controls.jar;C:\Program Files\Java\jdk-18.0.2\javafx-sdk-18.0.2\lib\javafx.fxml.jar;C:\Program Files\Java\jdk-18.0.2\javafx-sdk-18.0.2\lib\javafx.graphics.jar;C:\Program Files\Java\jdk-18.0.2\javafx-sdk-18.0.2\lib\javafx.media.jar;C:\Program Files\Java\jdk-18.0.2\javafx-sdk-18.0.2\lib\javafx.swing.jar;C:\Program Files\Java\jdk-18.0.2\javafx-sdk-18.0.2\lib\javafx.web.jar" />
     <property name="libs.jakartaee-web-api-8.0.classpath" value="C:\Program Files\NetBeans-15\netbeans\enterprise\modules\ext\jakarta.jakartaee-web-api-8.0.0.jar" />
     <property name="dist.jlink.dir" value="dist/jlink" />
-    <property name="nb.junit.batch" value="true" />
+    <property name="nb.junit.batch" value="false" />
     <property name="build.test.classes.dir" value="build/test/classes" />
     <property name="libs.spring-framework300.maven-pom" value="" />
-    <property name="ant.project.invoked-targets" value="test-single" />
+    <property name="ant.project.invoked-targets" value="test-single-method" />
     <property name="libs.jstl.classpath" value="C:\Program Files\NetBeans-15\netbeans\enterprise\modules\ext\jstl-impl.jar;C:\Program Files\NetBeans-15\netbeans\enterprise\modules\ext\jstl-api.jar" />
     <property name="ap.cmd.line.internal" value="" />
     <property name="libs.PostgreSQLDriver.src" value="" />
     <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/" />
     <property name="annotation.processing.source.output" value="build/generated-sources/ap-source-output" />
     <property name="libs.javaee-endorsed-api-6.0.maven-pom" value="" />
-    <property name="user.dir" value="C:\Users\alezx\OneDrive\Documentos\NetBeansProjects\Ke-Shop\Ke-Shop" />
+    <property name="user.dir" value="C:\Users\ASUS\Documents\Tercer semestre\programacion orientada\Ke-Shop\Ke-Shop\Ke-Shop\Ke-Shop\Ke-Shop" />
     <property name="platform.java" value="C:\Program Files\Java\jdk-18.0.2/bin/java" />
     <property name="application.args" value="" />
     <property name="org.xml.sax.driver" value="com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl$JAXPSAXParser" />
@@ -446,26 +442,8 @@
     <property name="libs.jsp-compiler.classpath" value="C:\Program Files\NetBeans-15\netbeans\enterprise\ant\extra\jspcompile.jar" />
     <property name="libs.javaee-endorsed-api-6.0.classpath" value="C:\Program Files\NetBeans-15\netbeans\enterprise\modules\ext\javaee6-endorsed\javax.annotation.jar;C:\Program Files\NetBeans-15\netbeans\enterprise\modules\ext\javaee6-endorsed\jaxb-api-osgi.jar;C:\Program Files\NetBeans-15\netbeans\enterprise\modules\ext\javaee6-endorsed\webservices-api-osgi.jar" />
   </properties>
-  <testcase classname="tnt.publicacion.PublicacionTest" name="testSetDescripcion" time="0.022" />
-  <testcase classname="tnt.publicacion.PublicacionTest" name="testGetName" time="0.004" />
-  <testcase classname="tnt.publicacion.PublicacionTest" name="testGetDescripcion" time="0.001" />
-  <testcase classname="tnt.publicacion.PublicacionTest" name="testSetCodigo" time="0.002" />
-  <testcase classname="tnt.publicacion.PublicacionTest" name="testGetCodigo" time="0.003" />
-  <testcase classname="tnt.publicacion.PublicacionTest" name="testSetPrecio" time="0.001" />
-  <testcase classname="tnt.publicacion.PublicacionTest" name="testSetCantidad" time="0.001" />
-  <testcase classname="tnt.publicacion.PublicacionTest" name="testGetCantidad" time="0.001" />
-  <testcase classname="tnt.publicacion.PublicacionTest" name="testGetPrecio" time="0.0" />
-  <testcase classname="tnt.publicacion.PublicacionTest" name="testSetName" time="0.002" />
-  <system-out><![CDATA[setDescripcion
-getName
-getDescripcion
-setCodigo
-getCodigo
-setPrecio
-setCantidad
-getCantidad
-getPrecio
-setName
+  <testcase classname="tnt.publicacion.PublicacionTest" name="testSetName" time="0.018" />
+  <system-out><![CDATA[setName
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
