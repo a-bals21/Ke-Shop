@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="1024.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="tnt.controllers.CajeroController">
+<AnchorPane id="AnchorPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="1024.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tnt.controllers.CajeroController">
     <stylesheets>
         <URL value="@cajero.css" />
     </stylesheets>
@@ -33,7 +33,7 @@
                               <Cursor fx:constant="DEFAULT" />
                            </cursor>
                         </Label>
-                        <Button id="close" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" textAlignment="CENTER" wrapText="true" HBox.hgrow="NEVER">
+                        <Button id="close" fx:id="btnLogout" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#desloguear" prefHeight="25.0" prefWidth="25.0" textAlignment="CENTER" wrapText="true" HBox.hgrow="NEVER">
                            <styleClass>
                               <String fx:value="logout-icon" />
                               <String fx:value="botones" />
@@ -55,7 +55,7 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
                <left>
-                  <Label styleClass="titulo-w" text="NombreUsuario" BorderPane.alignment="CENTER" />
+                  <Label fx:id="lNombreUsuario" styleClass="titulo-w" text="NombreUsuario" BorderPane.alignment="CENTER" />
                </left>
             </BorderPane>
             <BorderPane id="body" style="-fx-background-color: #fafafa;" VBox.vgrow="ALWAYS">
@@ -89,12 +89,12 @@
                         <Insets />
                      </opaqueInsets>
                      <center>
-                        <TableView editable="true" focusTraversable="false" maxWidth="-Infinity" minWidth="600.0" prefWidth="800.0" tableMenuButtonVisible="true" BorderPane.alignment="CENTER">
+                        <TableView fx:id="tvwCarrito" editable="true" focusTraversable="false" maxWidth="-Infinity" minWidth="600.0" prefWidth="800.0" tableMenuButtonVisible="true" BorderPane.alignment="CENTER">
                            <padding>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </padding>
                            <columns>
-                              <TableColumn prefWidth="75.0" text="Codigo" />
+                              <TableColumn fx:id="tcCodigo" prefWidth="75.0" text="Codigo" />
                               <TableColumn prefWidth="75.0" text="Producto" />
                               <TableColumn prefWidth="75.0" text="Precio Unidad" />
                               <TableColumn prefWidth="75.0" text="Cantidad" />
@@ -112,8 +112,8 @@
                      <center>
                         <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0" BorderPane.alignment="CENTER">
                            <children>
-                              <Button mnemonicParsing="false" prefWidth="150.0" styleClass="botones" text="Añadir producto" wrapText="true" />
-                              <Button layoutX="56.0" layoutY="20.0" maxWidth="-Infinity" mnemonicParsing="false" prefWidth="150.0" styleClass="botones" text="Registrar producto externo" textAlignment="CENTER" wrapText="true" />
+                              <Button fx:id="btnAddProductoInt" mnemonicParsing="false" onAction="#addProducto" prefWidth="150.0" styleClass="botones" text="Añadir producto" wrapText="true" />
+                              <Button fx:id="btnAddProductoExt" layoutX="56.0" layoutY="20.0" maxWidth="-Infinity" mnemonicParsing="false" onAction="#registrarProductoExterno" prefWidth="150.0" styleClass="botones" text="Registrar producto externo" textAlignment="CENTER" wrapText="true" />
                            </children>
                            <opaqueInsets>
                               <Insets />
@@ -121,7 +121,7 @@
                         </VBox>
                      </center>
                      <bottom>
-                        <Button maxWidth="-Infinity" mnemonicParsing="false" prefWidth="150.0" styleClass="botones" text="Cerrar Venta" textAlignment="CENTER" wrapText="true" BorderPane.alignment="CENTER" />
+                        <Button fx:id="btnVenta" maxWidth="-Infinity" mnemonicParsing="false" onAction="#cerrarVenta" prefWidth="150.0" styleClass="botones" text="Cerrar Venta" textAlignment="CENTER" wrapText="true" BorderPane.alignment="CENTER" />
                      </bottom>
                      <BorderPane.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

@@ -4,10 +4,12 @@
  */
 package tnt.cajero;
 
+import java.io.Serializable;
+
 /**
- *
+ *  Abstracción de la venta generada al cerrar una compra del cajero
  * @author Angel Balderas
  */
-public class Venta {
+public class Venta implements Serializable {
     
 }

@@ -4,11 +4,13 @@
  */
 package tnt.publicacion;
 
+import java.io.Serializable;
+
 /**
  * Manera de representar los productos dentro del software
  * @author Erika Aguilar
  */
-public class Publicacion {
+public class Publicacion implements Serializable {
     
     private String name;
     private double precio;

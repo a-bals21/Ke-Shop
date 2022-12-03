@@ -4,19 +4,10 @@
  */
 package tnt.cajero;
 
-import java.util.ArrayList;
-import tnt.publicacion.Publicacion;
-
 /**
- * Encargado de buscar y borrar productos almacenados de manera persistente.
+ * Encargado de guardar el registro de ventas
  * @author Angel Balderas
  */
 public class CajaRegistradora {
-    ArrayList<Publicacion> almacen;
     
-    //Obtener la lista de productos guardada sino existe mostrar mensaje
-    public Publicacion obtenerProducto(String codigo) {
-        
-        return null;
-    }
 }

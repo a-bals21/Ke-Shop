@@ -4,11 +4,13 @@
  */
 package tnt.perfil;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Angel Balderas
  */
-public class Perfil {
+public class Perfil implements Serializable {
     private String name;
     private String user;
     private String password;
@@ -19,31 +21,31 @@ public class Perfil {
         this.password = password;
     }
 
-    public String getNombre() {
+    public String getName() {
         return name;
     }
 
-    public void setNombre(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
-    public String getUsuario() {
+    public String getUser() {
         return user;
     }
 
-    public void setUsuario(String user) {
+    public void setUser(String user) {
         this.user = user;
     }
 
-    public String getContrasenia() {
+    public String getPassword() {
         return password;
     }
 
-    public void setContrasenia(String password) {
+    public void setPassword(String password) {
         this.password = password;
     }
     
-    public boolean compararContrasenia(String password) {
+    public boolean compararPassword(String password) {
         return password.equals(this.password);
     }
     

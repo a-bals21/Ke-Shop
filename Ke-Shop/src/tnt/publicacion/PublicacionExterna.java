@@ -4,11 +4,13 @@
  */
 package tnt.publicacion;
 
+import java.io.Serializable;
+
 /**
  * Representa los producto externo o ajenos a la tienda misma
  * @author Erika Aguilar
  */
-public class PublicacionExterna extends Publicacion {
+public class PublicacionExterna extends Publicacion implements Serializable {
     
     private String telefono;
     private String claveElector;

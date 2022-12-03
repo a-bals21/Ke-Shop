@@ -4,11 +4,13 @@
  */
 package tnt.perfil;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Angel Balderas
  */
-public class Cliente extends Perfil {
+public class Cliente extends Perfil implements Serializable{
 
     public Cliente(String name, String user, String password) {
         super(name, user, password);

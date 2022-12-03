@@ -9,8 +9,10 @@
 * {
     -fx-primary-color: #fafafa;
     -fx-secondary-color: #ff8080;
-    -fx-tercary-color: #99FF80;
+    -fx-tercary-color: #4848b8;
+    -fx-fourth-color: #6f856f;
     -fx-2clear-color: #FD9696;
+    -fx-2dark-color: #bf6060;
     -fx-grey-color: #b9b9b9;
     -fx-black-color: #242424;
 }
@@ -43,10 +45,10 @@
     -fx-background-color: -fx-black-color, -fx-secondary-color;
     -fx-text-fill: -fx-primary-color;
     -fx-cursor: TEXT;
-    -fx-font-weight: 300;
+    -fx-font-weight: bold;
     -fx-background-insets: 0, 1;
     -fx-background-radius: 0;
-    -fx-prompt-text-fill: -fx-tercary-color;
+    -fx-prompt-text-fill: -fx-2dark-color;
     -fx-focus-traversable: true;
 }
 

@@ -4,12 +4,10 @@
  */
 package tnt.cajero;
 
-import java.util.Date;
-
 /**
- *
+ *  Abstraccion del ticket generado por una compra
  * @author Angel Balderas
  */
 public class Ticket {
-    private Date fecha;
+    
 }
