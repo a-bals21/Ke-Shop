@@ -62,6 +62,7 @@ public class InventarioPerfil {
                
                oos.writeObject(admin);
                lista.add(admin);
+               
                System.out.println("Perfiles creados y Administrador creado");
             }
         } catch (IOException | ClassNotFoundException ioex) {

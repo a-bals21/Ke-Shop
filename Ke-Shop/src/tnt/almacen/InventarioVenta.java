@@ -71,6 +71,10 @@ public class InventarioVenta {
         return lista.contains(venta);
     }
     
+    public ArrayList<Venta> obtenerInventario() {
+        return lista;
+    }
+    
     public void eliminarInventario() {
         lista.clear();
         File perfiles = new File(rutaGuardado+"/ventas");

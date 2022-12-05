@@ -28,9 +28,13 @@ public class Main extends Application {
     @Override
     public void init() {
         inventario = new GestorInventario("./persistencia");
-        inventario.cargarInventario(0);
+        inventario.cargarInventario();
     }
     
+    /**
+     * Inicia la escena principal, el Login
+     * @param primaryStage 
+     */
     @Override
     public void start(Stage primaryStage) {
         try {

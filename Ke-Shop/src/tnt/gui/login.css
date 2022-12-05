@@ -75,9 +75,15 @@
     -fx-cursor: HAND;
 }
 
+.botones:pressed {
+    -fx-background-color: -fx-tercary-color;
+    -fx-text-fill: -fx-secondary-color;
+}
+
 .botones:focused {
     -fx-border-color: -fx-tercary-color;
 }
+
 /*FONDOS*/
 #header {
     -fx-background-color: -fx-secondary-color;

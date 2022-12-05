@@ -54,10 +54,18 @@ public class LoginController implements Initializable {
     @FXML
     private Label lError;
     
+    /**
+     * Inicia el acceso al inventario
+     * @param inventario 
+     */
     public void setInventario(GestorInventario inventario) {
         this.inventario = inventario;
     }
     
+    /**
+     * Cambia a la ventana dependiendo del tipo de perfil
+     * @param perfil 
+     */
     public void cambiarEscena(Perfil perfil){
         try {
             FXMLLoader loader = null;
@@ -120,6 +128,12 @@ public class LoginController implements Initializable {
         }
     }
     
+    /**
+     * Obtiene el perfil actualmente ingresado
+     * @param user
+     * @param password
+     * @return 
+     */
     public Perfil obtenerPerfil(String user, String password) {
         Perfil perfil = null;
         ArrayList<Perfil> perfiles = inventario.inventarioPerfil.obtenerInventario();

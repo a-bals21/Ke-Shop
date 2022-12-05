@@ -49,6 +49,36 @@
     -fx-cursor: HAND;
 }
 
+.botones:pressed {
+    -fx-background-color: -fx-tercary-color;
+    -fx-text-fill: -fx-secondary-color;
+}
+
 .botones:focused {
     -fx-border-color: -fx-tercary-color;
+}
+
+/*TEXTFIELDS*/
+.campotexto {
+    -fx-background-color: -fx-black-color, -fx-secondary-color;
+    -fx-text-fill: -fx-primary-color;
+    -fx-cursor: TEXT;
+    -fx-font-weight: bold;
+    -fx-background-insets: 0, 1;
+    -fx-background-radius: 0;
+    -fx-prompt-text-fill: -fx-2dark-color;
+    -fx-focus-traversable: true;
+}
+
+.campotexto:focused {
+    -fx-background-color: -fx-secondary-color, white;
+    -fx-text-fill: -fx-black-color;
+    -fx-font-weight: 0;
+    -fx-accent-color: none;
+    -fx-prompt-text-fill: -fx-secondary-color;
+}
+
+/*TABLEVIEW*/
+.table-row-cell:odd {
+    -fx-background-color: -fx-2clear-color;
 }

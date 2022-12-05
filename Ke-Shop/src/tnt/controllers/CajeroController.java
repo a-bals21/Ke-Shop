@@ -54,7 +54,6 @@ public class CajeroController implements Initializable {
     
     public void setInventario(GestorInventario inventario) {
         this.inventario = inventario;
-        inventario.cargarInventario(1);
     }
     
     /**

@@ -77,6 +77,10 @@ public class InventarioPublicacion {
         return lista.contains(publicacion);
     }
     
+    public ArrayList<Publicacion> obtenerInventario() {
+        return lista;
+    }
+    
     public void eliminarInventario() {
         lista.clear();
         File perfiles = new File(rutaGuardado+"/publicaciones");
