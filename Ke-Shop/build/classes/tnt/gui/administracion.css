@@ -78,7 +78,7 @@
     -fx-prompt-text-fill: -fx-secondary-color;
 }
 
-/*TABLEVIEW*/
+/*TABLEVIEW
 .table-row-cell:odd {
     -fx-background-color: -fx-2clear-color;
-}
+}*/

@@ -12,7 +12,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.css.converter.StringConverter;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,10 +22,10 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -50,18 +49,6 @@ public class AdministracionController implements Initializable {
     private Button btnLogout;
     @FXML
     private TableView<Publicacion> tvwProductos;
-    @FXML
-    private Button btnAdd;
-    @FXML
-    private Button btnEditar;
-    @FXML
-    private Button btnEliminar;
-    @FXML
-    private Button btnAdd1;
-    @FXML
-    private Button btnEditar1;
-    @FXML
-    private Button btnEliminar1;
     @FXML
     private ChoiceBox<String> cbFiltroProducto;
     @FXML
@@ -90,6 +77,32 @@ public class AdministracionController implements Initializable {
     private TableColumn<?, ?> colPagoVenta;
     @FXML
     private TableColumn<?, ?> colCambioVenta;
+    @FXML
+    private Button btnAddPerfil;
+    @FXML
+    private Button btnEditarPerfil;
+    @FXML
+    private Button btnEliminarPerfil;
+    @FXML
+    private Button btnGuardarCambiosPerfil;
+    @FXML
+    private TextField tfBuscadorProducto;
+    @FXML
+    private Button btnBuscarProducto;
+    @FXML
+    private Button btnAddProducto;
+    @FXML
+    private Button btnEditarProducto;
+    @FXML
+    private Button btnEliminarProducto;
+    @FXML
+    private Button btnGuardarCambiosProducto;
+    @FXML
+    private ChoiceBox<?> cbFiltroVenta;
+    @FXML
+    private Button btnBuscarVenta;
+    @FXML
+    private Button btnGuardarCambiosVenta;
 
     /**
      * Inicia el acceso al inventario
@@ -201,6 +214,9 @@ public class AdministracionController implements Initializable {
 
     @FXML
     private void add(ActionEvent event) {
+        if (event.getSource().equals(this.btnAddPerfil)) {
+            
+        }
     }
 
     @FXML
@@ -209,5 +225,25 @@ public class AdministracionController implements Initializable {
 
     @FXML
     private void eliminar(ActionEvent event) {
+    }
+
+    @FXML
+    private void guardarCambio(ActionEvent event) {
+    }
+
+    @FXML
+    private void aplicarFiltroProducto(ActionEvent event) {
+    }
+
+    @FXML
+    private void guardarCambios(ActionEvent event) {
+    }
+
+    @FXML
+    private void aplicarFiltroVenta(ActionEvent event) {
+    }
+
+    @FXML
+    private void eliminarVentas(ActionEvent event) {
     }
 }

@@ -6,8 +6,10 @@ package tnt.almacen;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import tnt.publicacion.Publicacion;
 import tnt.publicacion.PublicacionExterna;
@@ -54,6 +56,24 @@ public class InventarioPublicacion {
             }
         } catch (IOException | ClassNotFoundException ioex) {
             System.out.println(ioex.getMessage());
+        }
+    }
+    
+    public void guardarInvetario() {
+        String ruta = rutaGuardado + "/publicaciones";
+
+        try {
+            FileOutputStream fos = new FileOutputStream(ruta, true);
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            
+            
+            for (Publicacion temp: lista) {
+                oos.writeObject(temp);
+            }
+
+            System.out.println("Productos guardados");
+        } catch (IOException ioe) {
+            System.out.println(ioe.getMessage());
         }
     }
     

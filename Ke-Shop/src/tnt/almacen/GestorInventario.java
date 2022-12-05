@@ -20,15 +20,31 @@ public class GestorInventario {
         inventarioVenta = new InventarioVenta(ruta);
     }
 
-    public void cargarInventario() {
+    public void cargarInventarios() {
         inventarioPerfil.cargarInventario();
         inventarioPublicacion.cargarInventario();
         inventarioVenta.cargarInventario();
     }
 
-    public void eliminarInventario() {
+    public void eliminarInventarios() {
         inventarioPerfil.eliminarInventario();
         inventarioPublicacion.eliminarInventario();
         inventarioVenta.eliminarInventario();
+    }
+    
+    public void guardarInventario(int n) {
+        switch (n) {
+            case 0:
+                inventarioPerfil.guardarInvetario();
+                break;
+            case 1:
+                inventarioPublicacion.guardarInvetario();
+                break;
+            case 2:
+                inventarioVenta.guardarInvetario();
+                break;
+            default:
+                break;
+        }
     }
 }

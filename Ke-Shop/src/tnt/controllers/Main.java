@@ -28,7 +28,7 @@ public class Main extends Application {
     @Override
     public void init() {
         inventario = new GestorInventario("./persistencia");
-        inventario.cargarInventario();
+        inventario.cargarInventarios();
     }
     
     /**
