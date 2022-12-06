@@ -5,6 +5,7 @@
 package tnt.perfil;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  *
@@ -47,6 +48,5 @@ public class Perfil implements Serializable {
     
     public boolean compararPassword(String password) {
         return password.equals(this.password);
-    }
-    
+    }    
 }

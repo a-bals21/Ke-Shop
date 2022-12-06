@@ -47,8 +47,6 @@ public class InventarioPerfil {
                         lista.add((Administrador) temp);
                     } else if (temp.getClass().equals(Cajero.class)) {
                         lista.add((Cajero) temp);
-                    } else if (temp.getClass().equals(Cliente.class)) {
-                        lista.add((Cliente) temp);
                     }
                 }
 
@@ -70,10 +68,16 @@ public class InventarioPerfil {
             System.out.println(ioex.getMessage());
         }
     }
-
+    
+    /**
+     * Guarda la lista actual en forma de archivo persistente, actualizando el archivo ya creado
+     */
     public void guardarInvetario() {
         String ruta = rutaGuardado + "/perfiles";
-
+        
+        File perfiles = new File(ruta);
+        perfiles.delete();
+        
         try {
             FileOutputStream fos = new FileOutputStream(ruta, true);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
@@ -106,7 +110,15 @@ public class InventarioPerfil {
     }
 
     public boolean contiene(Perfil perfil) {
-        return lista.contains(perfil);
+        boolean value = false;
+        
+        for (Perfil temp: lista) {
+            if (perfil.getUser().equals(temp.getUser())) {
+                value = true;
+            }
+        }
+        
+        return value;
     }
 
     public ArrayList<Perfil> obtenerInventario() {

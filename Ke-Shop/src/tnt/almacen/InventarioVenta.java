@@ -55,7 +55,10 @@ public class InventarioVenta {
     
     public void guardarInvetario() {
         String ruta = rutaGuardado + "/ventas";
-
+        
+        File perfiles = new File(ruta);
+        perfiles.delete();
+        
         try {
             FileOutputStream fos = new FileOutputStream(ruta, true);
             ObjectOutputStream oos = new ObjectOutputStream(fos);

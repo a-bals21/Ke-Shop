@@ -102,7 +102,13 @@ public class AdministracionController implements Initializable {
     @FXML
     private Button btnBuscarVenta;
     @FXML
-    private Button btnGuardarCambiosVenta;
+    private Button btnEliminarVentas;
+    @FXML
+    private Button btnRefrescarPerfiles;
+    @FXML
+    private Button btnRefrescarProductos;
+    @FXML
+    private Button btnRefrescarVentas;
 
     /**
      * Inicia el acceso al inventario
@@ -111,9 +117,8 @@ public class AdministracionController implements Initializable {
      */
     public void setInventario(GestorInventario inventario) {
         this.inventario = inventario;
-
+        
         cbFiltroProducto.getItems().addAll("Nombre", "Código");
-        actualizarTablaPerfiles();
     }
 
     /**
@@ -143,7 +148,7 @@ public class AdministracionController implements Initializable {
         ArrayList<Publicacion> productos = inventario.inventarioPublicacion.obtenerInventario();
         ObservableList<Publicacion> olProductos = FXCollections.observableArrayList();
 
-        this.colNombreProducto.setCellValueFactory(new PropertyValueFactory("nombre"));
+        this.colNombreProducto.setCellValueFactory(new PropertyValueFactory("name"));
         this.colCodigoProducto.setCellValueFactory(new PropertyValueFactory("codigo"));
         this.colDescripcionProducto.setCellValueFactory(new PropertyValueFactory("descripcion"));
         this.colPrecioProducto.setCellValueFactory(new PropertyValueFactory("precio"));
@@ -170,6 +175,14 @@ public class AdministracionController implements Initializable {
         }
 
         tvwVentas.setItems(olVentas);
+    }
+
+    private void msgNoSeleccion() {
+        Alert alerta = new Alert(Alert.AlertType.WARNING);
+
+        alerta.setTitle("ADVERTENCIA");
+        alerta.setHeaderText("Debe seleccionar algo primero");
+        alerta.show();
     }
 
     /**
@@ -214,21 +227,120 @@ public class AdministracionController implements Initializable {
 
     @FXML
     private void add(ActionEvent event) {
-        if (event.getSource().equals(this.btnAddPerfil)) {
-            
+        try {
+            if (event.getSource().equals(this.btnAddPerfil)) {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/tnt/gui/EDPerfil.fxml"));
+                Parent root = loader.load();
+                EDPerfilController controlador = loader.getController();
+
+                Scene escena = new Scene(root);
+                Stage stage = new Stage();
+
+                stage.setScene(escena);
+                stage.setTitle("Nuevo Cajero");
+
+                stage.show();
+
+                controlador.iniciar(inventario, this, 0);
+            } else if (event.getSource().equals(this.btnAddProducto)) {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/tnt/gui/EDPublicacion.fxml"));
+                Parent root = loader.load();
+                EDPublicacionController controlador = loader.getController();
+
+                Scene escena = new Scene(root);
+                Stage stage = new Stage();
+
+                stage.setScene(escena);
+                stage.setTitle("Nuevo Producto");
+
+                stage.show();
+
+                controlador.iniciar(inventario, this, 0);
+            }
+        } catch (IOException ioe) {
+            System.out.println(ioe.getMessage());
         }
     }
 
     @FXML
     private void editar(ActionEvent event) {
+        try {
+            if (event.getSource().equals(this.btnEditarPerfil)) {
+                int index = tvwPerfiles.getSelectionModel().getSelectedIndex();
+
+                if (index != -1) {
+
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/tnt/gui/EDPerfil.fxml"));
+                    Parent root = loader.load();
+                    EDPerfilController controlador = loader.getController();
+
+                    Scene escena = new Scene(root);
+                    Stage stage = new Stage();
+
+                    stage.setScene(escena);
+                    stage.setTitle("Crear Cajero");
+
+                    stage.show();
+
+                    controlador.setIndexPerfil(index);
+                    controlador.iniciar(inventario, this, 1);
+                } else {
+                    msgNoSeleccion();
+                }
+            } else if (event.getSource().equals(this.btnEditarProducto)) {
+                int index = tvwProductos.getSelectionModel().getSelectedIndex();
+
+                if (index != -1) {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/tnt/gui/EDPublicacion.fxml"));
+                    Parent root = loader.load();
+                    EDPublicacionController controlador = loader.getController();
+
+                    Scene escena = new Scene(root);
+                    Stage stage = new Stage();
+
+                    stage.setScene(escena);
+                    stage.setTitle("Nuevo Producto");
+
+                    stage.show();
+
+                    controlador.setIndexProducto(index);
+                    controlador.iniciar(inventario, this, 1);
+                } else {
+                    msgNoSeleccion();
+                }
+            }
+        } catch (IOException ioe) {
+            System.out.println(ioe.getMessage());
+        }
     }
 
     @FXML
     private void eliminar(ActionEvent event) {
-    }
+        if (event.getSource().equals(this.btnEliminarPerfil)) {
+            int index = tvwPerfiles.getSelectionModel().getSelectedIndex();
 
-    @FXML
-    private void guardarCambio(ActionEvent event) {
+            if (index == 0) {
+                Alert alerta = new Alert(Alert.AlertType.WARNING);
+
+                alerta.setTitle("ADVERTENCIA");
+                alerta.setHeaderText("No puedes eliminar el perfil del administrador");
+                alerta.show();
+            } else if (index != -1) {
+                inventario.inventarioPerfil.borrar(index);
+                actualizarTablaPerfiles();
+            } else {
+                msgNoSeleccion();
+            }
+        } else if (event.getSource().equals(this.btnEliminarProducto)) {
+            int index = tvwProductos.getSelectionModel().getSelectedIndex();
+
+            if (index != -1) {
+                inventario.inventarioPublicacion.borrar(index);
+                actualizarTablaProductos();
+            } else {
+                msgNoSeleccion();
+            }
+        }
     }
 
     @FXML
@@ -237,6 +349,17 @@ public class AdministracionController implements Initializable {
 
     @FXML
     private void guardarCambios(ActionEvent event) {
+        if (event.getSource().equals(this.btnGuardarCambiosPerfil)) {
+            inventario.inventarioPerfil.guardarInvetario();
+        } else if (event.getSource().equals(this.btnGuardarCambiosProducto)) {
+            inventario.inventarioPublicacion.guardarInvetario();
+        }
+
+        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+
+        alerta.setTitle("Guardado");
+        alerta.setHeaderText("Se ha guardado correctamente");
+        alerta.show();
     }
 
     @FXML
@@ -245,5 +368,18 @@ public class AdministracionController implements Initializable {
 
     @FXML
     private void eliminarVentas(ActionEvent event) {
+        inventario.inventarioVenta.eliminarInventario();
+        actualizarTablaVentas();
+    }
+
+    @FXML
+    private void refrescar(ActionEvent event) {
+        if (event.getSource().equals(this.btnRefrescarPerfiles)) {
+            actualizarTablaPerfiles();
+        } else if (event.getSource().equals(this.btnRefrescarProductos)) {
+            actualizarTablaProductos();
+        } else if (event.getSource().equals(this.btnRefrescarVentas)) {
+            actualizarTablaVentas();
+        }
     }
 }

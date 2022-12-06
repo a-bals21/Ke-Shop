@@ -61,7 +61,10 @@ public class InventarioPublicacion {
     
     public void guardarInvetario() {
         String ruta = rutaGuardado + "/publicaciones";
-
+        
+        File perfiles = new File(ruta);
+        perfiles.delete();
+        
         try {
             FileOutputStream fos = new FileOutputStream(ruta, true);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
@@ -94,7 +97,18 @@ public class InventarioPublicacion {
     }
     
     public boolean contiene(Publicacion publicacion) {
-        return lista.contains(publicacion);
+        boolean value = false;
+        
+        for (Publicacion temp: lista) {
+            if (
+                    publicacion.getCodigo().equals(temp.getCodigo()) ||
+                    publicacion.getName().equals(temp.getName())
+                ) {
+                value = true;
+            }
+        }
+        
+        return value;
     }
     
     public ArrayList<Publicacion> obtenerInventario() {

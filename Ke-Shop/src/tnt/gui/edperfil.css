@@ -5,3 +5,58 @@
 .mainFxmlClass {
 
 }
+
+* {
+    -fx-primary-color: #fafafa;
+    -fx-secondary-color: #ff8080;
+    -fx-tercary-color: #4848b8;
+    -fx-fourth-color: #6f856f;
+    -fx-2clear-color: #FD9696;
+    -fx-2dark-color: #bf6060;
+    -fx-grey-color: #b9b9b9;
+    -fx-black-color: #242424;
+}
+
+/*TEXTFIELDS*/
+.campotexto {
+    -fx-background-color: -fx-black-color, -fx-secondary-color;
+    -fx-text-fill: -fx-primary-color;
+    -fx-cursor: TEXT;
+    -fx-font-weight: bold;
+    -fx-background-insets: 0, 1;
+    -fx-background-radius: 0;
+    -fx-prompt-text-fill: -fx-2dark-color;
+    -fx-focus-traversable: true;
+}
+
+.campotexto:focused {
+    -fx-background-color: -fx-secondary-color, white;
+    -fx-text-fill: -fx-black-color;
+    -fx-font-weight: normal;
+    -fx-accent-color: none;
+    -fx-prompt-text-fill: -fx-secondary-color;
+}
+
+/*BOTONES*/
+.botones {
+    -fx-font-weight: bold;
+    -fx-background-color: -fx-primary-color;
+    -fx-text-fill: -fx-black-color;
+    -fx-padding: 5;
+    -fx-border: 1;
+}
+
+.botones:hover {
+    -fx-background-color: -fx-secondary-color;
+    -fx-text-fill: -fx-primary-color;
+    -fx-cursor: HAND;
+}
+
+.botones:pressed {
+    -fx-background-color: -fx-tercary-color;
+    -fx-text-fill: -fx-secondary-color;
+}
+
+.botones:focused {
+    -fx-border-color: -fx-tercary-color;
+}

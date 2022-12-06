@@ -104,20 +104,6 @@ public class LoginController implements Initializable {
                 
                 controlador.setUsuario(perfil);
                 controlador.setInventario(inventario);
-            } else if (perfil.getClass().equals(tnt.perfil.Cliente.class)) {
-                loader = new FXMLLoader(getClass().getResource("/tnt/gui/Cliente.fxml"));
-                Parent root = loader.load();
-
-                Scene escena = new Scene(root);
-                Stage stage = new Stage();
-                
-                AdministracionController controlador = loader.getController();
-
-                stage.setScene(escena);
-                stage.setTitle("Ke-Shop");
-                stage.setMaximized(true);
-                stage.initStyle(StageStyle.UNDECORATED);
-                stage.show();
             }
             
             Stage myStage = (Stage) this.btnIngresar.getScene().getWindow();

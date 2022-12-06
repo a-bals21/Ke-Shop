@@ -6,7 +6,16 @@ package tnt.controllers;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import tnt.almacen.GestorInventario;
+import tnt.publicacion.PublicacionInterna;
 
 /**
  * FXML Controller class
@@ -15,12 +24,119 @@ import javafx.fxml.Initializable;
  */
 public class EDPublicacionController implements Initializable {
 
+    private int indexProducto;
+    private int modo = -1;
+    private GestorInventario inventario;
+    private AdministracionController controlador;
+    @FXML
+    private Label lError;
+    @FXML
+    private TextField tfCodigo;
+    @FXML
+    private TextField tfNombre;
+    @FXML
+    private TextArea taDescripcion;
+    @FXML
+    private TextField tfPrecio;
+    @FXML
+    private Button btnIngresar;
+
+    public void iniciar(GestorInventario inventario, AdministracionController controlador, int modo) {
+        this.inventario = inventario;
+        this.controlador = controlador;
+        this.modo = modo;
+    }
+
+    private void add() {
+        try {
+            String name = this.tfNombre.getText();
+            String codigo = this.tfCodigo.getText();
+            String descripcion = this.taDescripcion.getText();
+            double precio = Integer.parseInt(this.tfPrecio.getText());
+
+            PublicacionInterna producto = new PublicacionInterna(name, precio, codigo, descripcion);
+
+            if (!(inventario.inventarioPublicacion.contiene(producto))) {
+                if (!(name.isBlank() || codigo.isBlank())) {
+                    inventario.inventarioPublicacion.crear(producto);
+
+                    Stage myStage = (Stage) this.btnIngresar.getScene().getWindow();
+                    myStage.close();
+
+                    controlador.actualizarTablaProductos();
+                } else {
+                    this.lError.setText("No puedes dejar vacío un campo");
+                }
+            } else {
+                this.lError.setText("Producto ya registrado");
+            }
+        } catch (NumberFormatException nfe) {
+            lError.setText("Debe colocar solo números en el campo de Precio");
+        }
+
+    }
+
+    private void actualizar(int index) {
+        try {
+            String name = this.tfNombre.getText();
+            String codigo = this.tfCodigo.getText();
+            String descripcion = this.taDescripcion.getText();
+            double precio = Integer.parseInt(this.tfPrecio.getText());
+
+            PublicacionInterna producto = new PublicacionInterna(name, precio, codigo, descripcion);
+
+            if (!(inventario.inventarioPublicacion.contiene(producto))) {
+                if (!(name.isBlank() || codigo.isBlank())) {
+                    inventario.inventarioPublicacion.update(producto, index);
+
+                    Stage myStage = (Stage) this.btnIngresar.getScene().getWindow();
+                    myStage.close();
+
+                    controlador.actualizarTablaProductos();
+                } else {
+                    this.lError.setText("No puedes dejar vacío un campo");
+                }
+            } else {
+                this.lError.setText("Producto ya registrado");
+            }
+        } catch (NumberFormatException nfe) {
+            System.out.println(nfe);
+        }
+    }
+
+    public void setIndexProducto(int indexProducto) {
+        this.indexProducto = indexProducto;
+
+        PublicacionInterna producto = (PublicacionInterna) inventario.inventarioPublicacion.buscar(indexProducto);
+
+        tfNombre.setText(producto.getName());
+        tfCodigo.setText(producto.getCodigo());
+        taDescripcion.setText(producto.getDescripcion());
+        tfPrecio.setText(String.valueOf(producto.getPrecio()));
+    }
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-    
+    }
+
+    @FXML
+    private void enviarDatos(ActionEvent event) {
+        switch (modo) {
+            case 0:
+                add();
+                break;
+            case 1:
+                actualizar(indexProducto);
+                break;
+            default:
+                Stage myStage = (Stage) this.btnIngresar.getScene().getWindow();
+                myStage.close();
+                break;
+        }
+    }
+
 }

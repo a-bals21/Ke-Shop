@@ -62,7 +62,7 @@
                   <Label fx:id="lNombreUsuario" styleClass="titulo-w" text="NombreUsuario" BorderPane.alignment="CENTER" />
                </left>
             </BorderPane>
-            <TabPane style="-fx-background-color: -fx-2clear-color;" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+            <TabPane style="-fx-background-color: -fx-2clear-color -fx-2clear-color;" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
               <tabs>
                   <Tab text="Perfiles">
                      <content>
@@ -102,7 +102,7 @@
                                                       <Button fx:id="btnEliminarPerfil" mnemonicParsing="false" onAction="#eliminar" prefWidth="150.0" styleClass="botones" text="Eliminar perfil" wrapText="true" />
                                                    </children>
                                                 </VBox>
-                                                <Button fx:id="btnGuardarCambiosPerfil" layoutX="35.0" layoutY="104.0" mnemonicParsing="false" onAction="#guardarCambio" prefWidth="150.0" styleClass="botones" text="Guardar cambios" wrapText="true" />
+                                                <Button fx:id="btnGuardarCambiosPerfil" layoutX="35.0" layoutY="104.0" mnemonicParsing="false" onAction="#guardarCambios" prefWidth="150.0" styleClass="botones" text="Guardar cambios" wrapText="true" />
                                              </children>
                                              <opaqueInsets>
                                                 <Insets />
@@ -118,7 +118,17 @@
                                     </BorderPane>
                                  </right>
                                  <top>
-                                    <BorderPane maxHeight="-Infinity" prefHeight="30.0" style="-fx-background-color: -fx-2clear-color;" BorderPane.alignment="CENTER" />
+                                    <BorderPane style="-fx-background-color: -fx-2clear-color;" BorderPane.alignment="CENTER">
+                                       <left>
+                                          <Button fx:id="btnRefrescarPerfiles" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#refrescar" prefHeight="20.0" prefWidth="20.0" BorderPane.alignment="CENTER">
+                                             <styleClass>
+                                                <String fx:value="refresh-icon" />
+                                                <String fx:value="botones" />
+                                             </styleClass></Button>
+                                       </left>
+                                       <padding>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </padding></BorderPane>
                                  </top>
                               </BorderPane>
                            </children>
@@ -181,19 +191,26 @@
                                     </BorderPane>
                                  </right>
                                  <top>
-                                    <BorderPane maxHeight="-Infinity" style="-fx-background-color: -fx-2clear-color;" BorderPane.alignment="CENTER">
+                                    <BorderPane style="-fx-background-color: -fx-2clear-color;" BorderPane.alignment="CENTER">
                                        <right>
                                           <HBox alignment="CENTER_LEFT" spacing="20.0" BorderPane.alignment="CENTER_LEFT">
                                              <children>
+                                                <TextField fx:id="tfBuscadorProducto" promptText="Buscador " styleClass="campotexto" />
                                                 <ChoiceBox fx:id="cbFiltroProducto" accessibleRoleDescription="String" cache="true" prefWidth="150.0" />
-                                                <TextField fx:id="tfBuscadorProducto" />
                                                 <Button fx:id="btnBuscarProducto" mnemonicParsing="false" onAction="#aplicarFiltroProducto" styleClass="botones" text="Buscar" />
                                              </children>
                                           </HBox>
                                        </right>
                                        <padding>
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                       </padding></BorderPane>
+                                       </padding>
+                                       <left>
+                                          <Button fx:id="btnRefrescarProductos" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#refrescar" prefHeight="20.0" prefWidth="20.0" BorderPane.alignment="CENTER">
+                                             <styleClass>
+                                                <String fx:value="refresh-icon" />
+                                                <String fx:value="botones" />
+                                             </styleClass></Button>
+                                       </left></BorderPane>
                                  </top>
                               </BorderPane>
                            </children>
@@ -237,7 +254,7 @@
                                                 <Insets />
                                              </opaqueInsets>
                                              <children>
-                                                <Button fx:id="btnGuardarCambiosVenta" mnemonicParsing="false" onAction="#eliminarVentas" styleClass="botones" text="Eliminar registros" />
+                                                <Button fx:id="btnEliminarVentas" mnemonicParsing="false" onAction="#eliminarVentas" styleClass="botones" text="Eliminar registros" />
                                              </children>
                                              <padding>
                                                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -250,7 +267,7 @@
                                     </BorderPane>
                                  </right>
                                  <top>
-                                    <BorderPane maxHeight="-Infinity" prefHeight="30.0" style="-fx-background-color: -fx-2clear-color;" BorderPane.alignment="CENTER">
+                                    <BorderPane style="-fx-background-color: -fx-2clear-color;" BorderPane.alignment="CENTER">
                                        <right>
                                           <HBox alignment="CENTER_LEFT" spacing="20.0" BorderPane.alignment="CENTER">
                                              <children>
@@ -258,7 +275,17 @@
                                                 <Button fx:id="btnBuscarVenta" mnemonicParsing="false" onAction="#aplicarFiltroVenta" styleClass="botones" text="Buscar" />
                                              </children>
                                           </HBox>
-                                       </right></BorderPane>
+                                       </right>
+                                       <left>
+                                          <Button fx:id="btnRefrescarVentas" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#refrescar" prefHeight="20.0" prefWidth="20.0" BorderPane.alignment="CENTER">
+                                             <styleClass>
+                                                <String fx:value="refresh-icon" />
+                                                <String fx:value="botones" />
+                                             </styleClass></Button>
+                                       </left>
+                                       <padding>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </padding></BorderPane>
                                  </top>
                               </BorderPane>
                            </children>
