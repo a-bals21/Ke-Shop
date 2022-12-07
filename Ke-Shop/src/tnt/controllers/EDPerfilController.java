@@ -29,8 +29,6 @@ public class EDPerfilController implements Initializable {
     private AdministracionController controlador;
     private GestorInventario inventario;
     @FXML
-    private Label lError;
-    @FXML
     private TextField tfNombre;
     @FXML
     private TextField tfUsuario;
@@ -61,10 +59,10 @@ public class EDPerfilController implements Initializable {
 
                 controlador.actualizarTablaPerfiles();
             } else {
-                this.lError.setText("No puedes dejar vacío un campo");
+                msgVacío();
             }
         } else {
-            this.lError.setText("Cajero ya registrado");
+            msgYaRegistro();
         }
     }
 
@@ -75,21 +73,17 @@ public class EDPerfilController implements Initializable {
 
         Cajero cajero = new Cajero(name, user, password);
 
-        if (!(inventario.inventarioPerfil.contiene(cajero))) {
-            if (!(name.isBlank()
-                    || user.isBlank()
-                    || password.isBlank())) {
-                inventario.inventarioPerfil.update(cajero, index);
+        if (!(name.isBlank()
+                || user.isBlank()
+                || password.isBlank())) {
+            inventario.inventarioPerfil.update(cajero, index);
 
-                Stage myStage = (Stage) this.btnIngresar.getScene().getWindow();
-                myStage.close();
+            Stage myStage = (Stage) this.btnIngresar.getScene().getWindow();
+            myStage.close();
 
-                controlador.actualizarTablaPerfiles();
-            } else {
-                this.lError.setText("No puedes dejar vacío un campo");
-            }
+            controlador.actualizarTablaPerfiles();
         } else {
-            this.lError.setText("Cajero ya registrado");
+            msgVacío();
         }
 
     }
@@ -132,4 +126,19 @@ public class EDPerfilController implements Initializable {
         }
     }
 
+    private void msgVacío() {
+        Alert alerta = new Alert(Alert.AlertType.WARNING);
+
+        alerta.setTitle("ADVERTENCIA");
+        alerta.setHeaderText("No puedes dejar vacío un campo");
+        alerta.show();
+    }
+
+    private void msgYaRegistro() {
+        Alert alerta = new Alert(Alert.AlertType.WARNING);
+
+        alerta.setTitle("ADVERTENCIA");
+        alerta.setHeaderText("Cajero ya registrado");
+        alerta.show();
+    }
 }

@@ -6,7 +6,9 @@ package tnt.controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,6 +24,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -98,7 +101,7 @@ public class AdministracionController implements Initializable {
     @FXML
     private Button btnGuardarCambiosProducto;
     @FXML
-    private ChoiceBox<?> cbFiltroVenta;
+    private ChoiceBox<String> cbFiltroVenta;
     @FXML
     private Button btnBuscarVenta;
     @FXML
@@ -109,6 +112,10 @@ public class AdministracionController implements Initializable {
     private Button btnRefrescarProductos;
     @FXML
     private Button btnRefrescarVentas;
+    @FXML
+    private Button btnFiltrarVenta;
+    @FXML
+    private DatePicker dpFecha;
 
     /**
      * Inicia el acceso al inventario
@@ -117,8 +124,9 @@ public class AdministracionController implements Initializable {
      */
     public void setInventario(GestorInventario inventario) {
         this.inventario = inventario;
-        
-        cbFiltroProducto.getItems().addAll("Nombre", "Código");
+
+        cbFiltroProducto.getItems().addAll("Nombre", "Código", "Descripción");
+        cbFiltroVenta.getItems().addAll("Este año", "Esta mes", "Hoy");
     }
 
     /**
@@ -130,6 +138,10 @@ public class AdministracionController implements Initializable {
         lNombreUsuario.setText(perfil.getName());
     }
 
+    /**
+     * Actualiza la tabla de perfiles con la informacion del inventario de
+     * perfiles
+     */
     public void actualizarTablaPerfiles() {
         ArrayList<Perfil> perfiles = inventario.inventarioPerfil.obtenerInventario();
         ObservableList<Perfil> olPerfiles = FXCollections.observableArrayList();
@@ -144,6 +156,10 @@ public class AdministracionController implements Initializable {
         tvwPerfiles.setItems(olPerfiles);
     }
 
+    /**
+     * Actualiza la tabla de productos con la información del inventario de
+     * productos
+     */
     public void actualizarTablaProductos() {
         ArrayList<Publicacion> productos = inventario.inventarioPublicacion.obtenerInventario();
         ObservableList<Publicacion> olProductos = FXCollections.observableArrayList();
@@ -160,6 +176,9 @@ public class AdministracionController implements Initializable {
         tvwProductos.setItems(olProductos);
     }
 
+    /**
+     * Actualiza la tabla de ventas con la informacion del inventario de ventas
+     */
     public void actualizarTablaVentas() {
         ArrayList<Venta> ventas = inventario.inventarioVenta.obtenerInventario();
         ObservableList<Venta> olVentas = FXCollections.observableArrayList();
@@ -177,6 +196,9 @@ public class AdministracionController implements Initializable {
         tvwVentas.setItems(olVentas);
     }
 
+    /**
+     * Genera un mensaje emergente de advertencia
+     */
     private void msgNoSeleccion() {
         Alert alerta = new Alert(Alert.AlertType.WARNING);
 
@@ -193,6 +215,11 @@ public class AdministracionController implements Initializable {
 
     }
 
+    /**
+     * Te regresa al menú principal (El login)
+     *
+     * @param event
+     */
     @FXML
     private void desloguear(ActionEvent event) {
         Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
@@ -225,6 +252,12 @@ public class AdministracionController implements Initializable {
         }
     }
 
+    /**
+     * Detecta desde que botón proviene la llamada y añade a su respectiva lista
+     * un nuevo objeto.
+     *
+     * @param event
+     */
     @FXML
     private void add(ActionEvent event) {
         try {
@@ -262,6 +295,12 @@ public class AdministracionController implements Initializable {
         }
     }
 
+    /**
+     * Detecta desde que botón proviene la llamada y edita el objeto
+     * seleccionado de su respectiva lista.
+     *
+     * @param event
+     */
     @FXML
     private void editar(ActionEvent event) {
         try {
@@ -314,6 +353,12 @@ public class AdministracionController implements Initializable {
         }
     }
 
+    /**
+     * Detecta desde que botón proviene la llamada y elimina el objeto
+     * seleccionado de su respectiva lista.
+     *
+     * @param event
+     */
     @FXML
     private void eliminar(ActionEvent event) {
         if (event.getSource().equals(this.btnEliminarPerfil)) {
@@ -343,10 +388,49 @@ public class AdministracionController implements Initializable {
         }
     }
 
+    /**
+     * Buscador por codigo, nombre o descirpcion de productos, muestra su tabla
+     * resultante
+     *
+     * @param event
+     */
     @FXML
     private void aplicarFiltroProducto(ActionEvent event) {
+        String filtro = this.cbFiltroProducto.getValue();
+        String buscar = this.tfBuscadorProducto.getText().toUpperCase();
+
+        ArrayList<Publicacion> productos = GestorInventario.inventarioPublicacion.obtenerInventario();
+        ObservableList<Publicacion> olProductos = FXCollections.observableArrayList();
+
+        this.colNombreProducto.setCellValueFactory(new PropertyValueFactory("name"));
+        this.colCodigoProducto.setCellValueFactory(new PropertyValueFactory("codigo"));
+        this.colDescripcionProducto.setCellValueFactory(new PropertyValueFactory("descripcion"));
+        this.colPrecioProducto.setCellValueFactory(new PropertyValueFactory("precio"));
+
+        for (Publicacion temp : productos) {
+            if (filtro.equals("Nombre")) {
+                if (temp.getName().toUpperCase().contains(buscar)) {
+                    olProductos.add(temp);
+                }
+            } else if (filtro.equals("Codigo")) {
+                if (temp.getCodigo().toUpperCase().contains(buscar)) {
+                    olProductos.add(temp);
+                }
+            } else {
+                if (temp.getDescripcion().toUpperCase().contains(buscar)) {
+                    olProductos.add(temp);
+                }
+            }
+        }
+
+        tvwProductos.setItems(olProductos);
     }
 
+    /**
+     * Detecta desde que botón proviene la llamada y guarda su respectiva lista.
+     *
+     * @param event
+     */
     @FXML
     private void guardarCambios(ActionEvent event) {
         if (event.getSource().equals(this.btnGuardarCambiosPerfil)) {
@@ -361,17 +445,83 @@ public class AdministracionController implements Initializable {
         alerta.setHeaderText("Se ha guardado correctamente");
         alerta.show();
     }
-
+    
+    /**
+     * Detecta si se filtro o se busco, y hace la respectiva operacion.
+     * Busca en una fecha en concreto, En este año, mes u hoy
+     * @param event 
+     */
     @FXML
     private void aplicarFiltroVenta(ActionEvent event) {
+        String filtro = this.cbFiltroVenta.getValue();
+        LocalDate fechapck = dpFecha.getValue();
+        String buscar = this.tfBuscadorProducto.getText().toUpperCase();
+
+        ArrayList<Venta> ventas = inventario.inventarioVenta.obtenerInventario();
+        ObservableList<Venta> olVentas = FXCollections.observableArrayList();
+
+        this.colFechaVenta.setCellValueFactory(new PropertyValueFactory("fecha"));
+        this.colProductosVenta.setCellValueFactory(new PropertyValueFactory("productos"));
+        this.colMontoVenta.setCellValueFactory(new PropertyValueFactory("venta"));
+        this.colPagoVenta.setCellValueFactory(new PropertyValueFactory("pago"));
+        this.colCambioVenta.setCellValueFactory(new PropertyValueFactory("cambio"));
+
+        Date fechaIngresada = new Date(
+                fechapck.getYear(),
+                fechapck.getMonthValue(),
+                fechapck.getDayOfMonth()
+        );
+        
+        Date fechaActual = new Date();
+        
+        for (Venta temp : ventas) {
+            if (event.getSource().equals(this.btnFiltrarVenta)) {
+                switch (this.cbFiltroVenta.getValue()) {
+                    case "Este año":
+                        if (temp.getFecha().getYear()== fechaActual.getYear()) {
+                            olVentas.add(temp);
+                        }
+                        break;
+                    case "Este mes":
+                        if (temp.getFecha().getMonth() == fechaActual.getMonth()) {
+                            olVentas.add(temp);
+                        }
+                        break;
+                    case "Hoy":
+                        if (temp.getFecha().getDate() == fechaActual.getDate()) {
+                            olVentas.add(temp);
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            } else if (event.getSource().equals(this.btnBuscarVenta)) {
+                if (fechaIngresada.equals(temp.getFecha())) {
+                    olVentas.add(temp);
+                }
+            }
+        }
+
+        tvwVentas.setItems(olVentas);
     }
 
+    /**
+     * Elimina el inventario de ventas
+     *
+     * @param event
+     */
     @FXML
     private void eliminarVentas(ActionEvent event) {
         inventario.inventarioVenta.eliminarInventario();
         actualizarTablaVentas();
     }
 
+    /**
+     * Detecta desde que botón proviene la llamada y actualiza su respectiva
+     * lista, cargando los actuales elementos de sus inventarios.
+     *
+     * @param event
+     */
     @FXML
     private void refrescar(ActionEvent event) {
         if (event.getSource().equals(this.btnRefrescarPerfiles)) {

@@ -4,10 +4,28 @@
  */
 package tnt.cajero;
 
+import java.util.ArrayList;
+
 /**
  * Encargado de guardar el registro de ventas
  * @author Angel Balderas
  */
 public class CajaRegistradora {
+    private ArrayList<Venta> ventasDia;
+
+    public CajaRegistradora(ArrayList<Venta> ventasDia) {
+        this.ventasDia = ventasDia;
+    }
     
+    public void addVenta(Venta venta){
+        ventasDia.add(venta);
+    }
+    
+    public ArrayList<Venta> getVentasDia() {
+        return ventasDia;
+    }
+    
+    public void vaciarVentasDia() {
+        ventasDia.clear();
+    }
 }

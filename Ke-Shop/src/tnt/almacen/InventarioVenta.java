@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import tnt.cajero.Venta;
 
 /**
- *
+ * Carga y Edita la lista de ventas almacenadas
  * @author Angel Balderas
  */
 public class InventarioVenta {
@@ -26,6 +26,9 @@ public class InventarioVenta {
         this.rutaGuardado = rutaGuardado;
     }
     
+    /**
+     * Carga el inventario, de datos almacenados. Sino existe crea el archivo
+     */
     public void cargarInventario() {
         String ruta = rutaGuardado+"/ventas";
         
@@ -53,6 +56,9 @@ public class InventarioVenta {
         }
     }
     
+    /**
+     * Guarda la lista actual en forma de archivo persistente, actualizando el archivo ya creado
+     */
     public void guardarInvetario() {
         String ruta = rutaGuardado + "/ventas";
         
@@ -78,26 +84,52 @@ public class InventarioVenta {
         lista.add(venta);
     }
     
+    /**
+     * Busca una venta de la lista de ventas actual y la regresa
+     * @param index
+     * @return 
+     */
     public Venta buscar(int index) {
         return lista.get(index);
     }
     
+    /**
+     * Actualiza una venta de la lista de ventas actual
+     * @param index
+     * @param venta 
+     */
     public void actualizar(int index, Venta venta) {
         lista.set(index, venta);
     }
     
+     /**
+      * Elimina una venta de la lista de ventas actual
+      * @param index 
+      */
     public void borrar(int index) {
         lista.remove(index);
     }
     
+    /**
+     * Verifica si la lista de ventas actual contiene la venta enviada, y regresa un booleano
+     * @param venta
+     * @return 
+     */
     public boolean contiene(Venta venta) {
         return lista.contains(venta);
     }
     
+    /**
+     * Regresa la lista de ventas actual
+     * @return 
+     */
     public ArrayList<Venta> obtenerInventario() {
         return lista;
     }
     
+    /**
+     * Elimina el inventario, tanto actual como el persistido de perfiles
+     */
     public void eliminarInventario() {
         lista.clear();
         File perfiles = new File(rutaGuardado+"/ventas");

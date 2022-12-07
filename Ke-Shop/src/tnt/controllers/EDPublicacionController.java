@@ -9,6 +9,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
@@ -52,7 +53,7 @@ public class EDPublicacionController implements Initializable {
             String name = this.tfNombre.getText();
             String codigo = this.tfCodigo.getText();
             String descripcion = this.taDescripcion.getText();
-            double precio = Integer.parseInt(this.tfPrecio.getText());
+            double precio = Double.parseDouble(this.tfPrecio.getText());
 
             PublicacionInterna producto = new PublicacionInterna(name, precio, codigo, descripcion);
 
@@ -65,13 +66,13 @@ public class EDPublicacionController implements Initializable {
 
                     controlador.actualizarTablaProductos();
                 } else {
-                    this.lError.setText("No puedes dejar vacío un campo");
+                    msgVacío();
                 }
             } else {
-                this.lError.setText("Producto ya registrado");
+                msgYaRegistro();
             }
         } catch (NumberFormatException nfe) {
-            lError.setText("Debe colocar solo números en el campo de Precio");
+            msgSoloNumeros();
         }
 
     }
@@ -81,30 +82,27 @@ public class EDPublicacionController implements Initializable {
             String name = this.tfNombre.getText();
             String codigo = this.tfCodigo.getText();
             String descripcion = this.taDescripcion.getText();
-            double precio = Integer.parseInt(this.tfPrecio.getText());
+            double precio = Double.parseDouble(this.tfPrecio.getText());
 
             PublicacionInterna producto = new PublicacionInterna(name, precio, codigo, descripcion);
 
-            if (!(inventario.inventarioPublicacion.contiene(producto))) {
-                if (!(name.isBlank() || codigo.isBlank())) {
-                    inventario.inventarioPublicacion.update(producto, index);
+            if (!(name.isBlank() || codigo.isBlank())) {
+                inventario.inventarioPublicacion.update(producto, index);
 
-                    Stage myStage = (Stage) this.btnIngresar.getScene().getWindow();
-                    myStage.close();
+                Stage myStage = (Stage) this.btnIngresar.getScene().getWindow();
+                myStage.close();
 
-                    controlador.actualizarTablaProductos();
-                } else {
-                    this.lError.setText("No puedes dejar vacío un campo");
-                }
+                controlador.actualizarTablaProductos();
             } else {
-                this.lError.setText("Producto ya registrado");
+                msgVacío();
             }
-        } catch (NumberFormatException nfe) {
-            System.out.println(nfe);
-        }
     }
+    catch (NumberFormatException nfe) {
+            msgSoloNumeros();
+    }
+}
 
-    public void setIndexProducto(int indexProducto) {
+public void setIndexProducto(int indexProducto) {
         this.indexProducto = indexProducto;
 
         PublicacionInterna producto = (PublicacionInterna) inventario.inventarioPublicacion.buscar(indexProducto);
@@ -119,12 +117,12 @@ public class EDPublicacionController implements Initializable {
      * Initializes the controller class.
      */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
+public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
 
     @FXML
-    private void enviarDatos(ActionEvent event) {
+private void enviarDatos(ActionEvent event) {
         switch (modo) {
             case 0:
                 add();
@@ -138,5 +136,28 @@ public class EDPublicacionController implements Initializable {
                 break;
         }
     }
+    
+    private void msgVacío() {
+        Alert alerta = new Alert(Alert.AlertType.WARNING);
 
+        alerta.setTitle("ADVERTENCIA");
+        alerta.setHeaderText("No puedes dejar vacío un campo (excepto descripción)");
+        alerta.show();
+    }
+
+    private void msgYaRegistro() {
+        Alert alerta = new Alert(Alert.AlertType.WARNING);
+
+        alerta.setTitle("ADVERTENCIA");
+        alerta.setHeaderText("Producto ya registrado");
+        alerta.show();
+    }
+    
+    private void msgSoloNumeros() {
+        Alert alerta = new Alert(Alert.AlertType.WARNING);
+
+        alerta.setTitle("ADVERTENCIA");
+        alerta.setHeaderText("En precio solo pueden ir números/precios");
+        alerta.show();
+    }
 }

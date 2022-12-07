@@ -16,7 +16,7 @@ import tnt.publicacion.PublicacionExterna;
 import tnt.publicacion.PublicacionInterna;
 
 /**
- *
+ * Carga y Edita la lista de productos almacenados
  * @author Angel Balderas
  */
 public class InventarioPublicacion {
@@ -28,6 +28,9 @@ public class InventarioPublicacion {
         this.rutaGuardado = rutaGuardado;
     }
     
+    /**
+     * Carga el inventario, de datos almacenados. Sino existe crea el archivo
+     */
     public void cargarInventario() {
         String ruta = rutaGuardado+"/publicaciones";
         
@@ -59,6 +62,9 @@ public class InventarioPublicacion {
         }
     }
     
+    /**
+     * Guarda la lista de productos actual en forma de archivo persistente, actualizando el archivo ya creado
+     */
     public void guardarInvetario() {
         String ruta = rutaGuardado + "/publicaciones";
         
@@ -80,22 +86,45 @@ public class InventarioPublicacion {
         }
     }
     
+    /**
+     * Añade un producto a la lista de productos actual
+     * @param publicacion 
+     */
     public void crear(Publicacion publicacion) {
         lista.add(publicacion);
     }
     
+    /**
+     * Busca un producto de la lista de productos actual y lo regresa
+     * @param index
+     * @return 
+     */
     public Publicacion buscar(int index) {
         return lista.get(index);
     }
     
+    /**
+     * Actualiza un producto de la lista de productos actual
+     * @param publicacion
+     * @param index 
+     */
     public void update(Publicacion publicacion, int index) {
         lista.set(index, publicacion);
     }
     
+    /**
+     * Elimina un producto de la lista de productos actual
+     * @param index 
+     */
     public void borrar(int index) {
         lista.remove(index);
     }
     
+    /**
+     * Verifica si la lista de productos actual contiene el producto enviado, y regresa un booleano
+     * @param publicacion
+     * @return 
+     */
     public boolean contiene(Publicacion publicacion) {
         boolean value = false;
         
@@ -111,10 +140,17 @@ public class InventarioPublicacion {
         return value;
     }
     
+    /**
+     * Regresa la lista de productos actual
+     * @return 
+     */
     public ArrayList<Publicacion> obtenerInventario() {
         return lista;
     }
     
+    /**
+     * Elimina el inventario, tanto actual como el persistido de perfiles
+     */
     public void eliminarInventario() {
         lista.clear();
         File perfiles = new File(rutaGuardado+"/publicaciones");

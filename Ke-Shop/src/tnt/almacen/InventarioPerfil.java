@@ -13,11 +13,10 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import tnt.perfil.Administrador;
 import tnt.perfil.Cajero;
-import tnt.perfil.Cliente;
 import tnt.perfil.Perfil;
 
 /**
- *
+ * Carga y Edita la lista de perfiles almacenados
  * @author Angel Balderas
  */
 public class InventarioPerfil {
@@ -29,7 +28,10 @@ public class InventarioPerfil {
         lista = new ArrayList<>();
         this.rutaGuardado = rutaGuardado;
     }
-
+    
+    /**
+     * Carga el inventario, de datos almacenados. Sino existe crea el archivo
+     */
     public void cargarInventario() {
         String ruta = rutaGuardado + "/perfiles";
 
@@ -70,7 +72,7 @@ public class InventarioPerfil {
     }
     
     /**
-     * Guarda la lista actual en forma de archivo persistente, actualizando el archivo ya creado
+     * Guarda la lista de perfiles actual en forma de archivo persistente, actualizando el archivo ya creado
      */
     public void guardarInvetario() {
         String ruta = rutaGuardado + "/perfiles";
@@ -92,23 +94,46 @@ public class InventarioPerfil {
             System.out.println(ioe.getMessage());
         }
     }
-
+    
+    /**
+     * Añade un perfil a la lista de perfiles actual
+     * @param perfil 
+     */
     public void crear(Perfil perfil) {
         lista.add(perfil);
     }
-
+    
+    /**
+     * Busca un perfil de la lista de perfiles actual y lo regresa
+     * @param index
+     * @return 
+     */
     public Perfil buscar(int index) {
         return lista.get(index);
     }
-
+    
+    /**
+     * Actualiza un perfil de la lista de perfiles actual
+     * @param perfil
+     * @param index 
+     */
     public void update(Perfil perfil, int index) {
         lista.set(index, perfil);
     }
 
+    /**
+     * Borra un perfil de la lista de perfiles actual
+     * @param index 
+     */
     public void borrar(int index) {
         lista.remove(index);
     }
-
+    
+    /**
+     * Verifica si la lista de perfiles actual contiene el perfil enviado, y regresa un booleano
+     * @param perfil
+     * @return 
+     */
     public boolean contiene(Perfil perfil) {
         boolean value = false;
         
@@ -120,11 +145,18 @@ public class InventarioPerfil {
         
         return value;
     }
-
+    
+    /**
+     * Regresa la lista de perfiles actual
+     * @return 
+     */
     public ArrayList<Perfil> obtenerInventario() {
         return lista;
     }
-
+    
+    /**
+     * Elimina el inventario, tanto actual como el persistido de perfiles
+     */
     public void eliminarInventario() {
         lista.clear();
         File perfiles = new File(rutaGuardado + "/perfiles");
