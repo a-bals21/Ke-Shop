@@ -16,10 +16,11 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import tnt.almacen.GestorInventario;
+import tnt.publicacion.Publicacion;
 import tnt.publicacion.PublicacionInterna;
 
 /**
- * FXML Controller class
+ * Controlador para la entrada de productos a la persistencia
  *
  * @author Angel Balderas
  */
@@ -50,9 +51,9 @@ public class EDPublicacionController implements Initializable {
 
     private void add() {
         try {
-            String name = this.tfNombre.getText();
-            String codigo = this.tfCodigo.getText();
-            String descripcion = this.taDescripcion.getText();
+            String name = this.tfNombre.getText().strip();
+            String codigo = this.tfCodigo.getText().replaceAll("^//s*", "");
+            String descripcion = this.taDescripcion.getText().strip();
             double precio = Double.parseDouble(this.tfPrecio.getText());
 
             PublicacionInterna producto = new PublicacionInterna(name, precio, codigo, descripcion);
@@ -79,9 +80,9 @@ public class EDPublicacionController implements Initializable {
 
     private void actualizar(int index) {
         try {
-            String name = this.tfNombre.getText();
-            String codigo = this.tfCodigo.getText();
-            String descripcion = this.taDescripcion.getText();
+            String name = this.tfNombre.getText().strip();
+            String codigo = this.tfCodigo.getText().replaceAll("^//s*", "");
+            String descripcion = this.taDescripcion.getText().strip();
             double precio = Double.parseDouble(this.tfPrecio.getText());
 
             PublicacionInterna producto = new PublicacionInterna(name, precio, codigo, descripcion);
@@ -102,10 +103,8 @@ public class EDPublicacionController implements Initializable {
     }
 }
 
-public void setIndexProducto(int indexProducto) {
+public void setIndexProducto(Publicacion producto,int indexProducto) {
         this.indexProducto = indexProducto;
-
-        PublicacionInterna producto = (PublicacionInterna) inventario.inventarioPublicacion.buscar(indexProducto);
 
         tfNombre.setText(producto.getName());
         tfCodigo.setText(producto.getCodigo());

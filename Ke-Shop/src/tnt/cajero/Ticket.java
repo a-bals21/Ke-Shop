@@ -20,27 +20,37 @@ public class Ticket {
     private final String infoLocal = "";
     private String contenido;
     
-    public void colocarContenido(ArrayList<Publicacion> productos, double suma, Perfil perfil) {
+    public void colocarContenido(ArrayList<Publicacion> productos, double sumaT, Perfil perfil) {
+        contenido = "Ke-shop\nCompra realizada\nCajero "+perfil.getName()+"\n";
         
+        for (Publicacion temp: productos) {
+            double sumaP = temp.getCantidad() * temp.getPrecio();
+            contenido += "\n"+temp.getName()+"\t"+temp.getCantidad()+"\t$"+sumaP;
+        }
+        
+        contenido += "\n\n\tTotal " + sumaT;
     }
     
     public void generarTicket() throws IOException {
-        String ruta = "./assets/tickets";
+        String ruta = "./assets/tickets/ticket.txt";
         
         File ticket = new File(ruta);
         
         if(ticket.exists()) {
             ticket.delete();
             
-            FileWriter fw = new FileWriter(ticket);
-            BufferedWriter bw = new BufferedWriter(fw);
-            
-            fw.write(contenido);
+            generarTicket();
         } else {
+            ticket.createNewFile();
+            
             FileWriter fw = new FileWriter(ticket);
             BufferedWriter bw = new BufferedWriter(fw);
             
             fw.write(contenido);
         }
+    }
+    
+    public String getContenido() {
+        return contenido;
     }
 }

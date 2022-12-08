@@ -23,7 +23,7 @@ public class Publicacion implements Serializable {
         this.precio = precio;
         this.codigo = codigo;
         this.descripcion = descripcion;
-        this.cantidad = 0;
+        this.cantidad = 1;
     }
 
     public String getName() {

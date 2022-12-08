@@ -13,8 +13,8 @@ import java.util.ArrayList;
 public class CajaRegistradora {
     private ArrayList<Venta> ventasDia;
 
-    public CajaRegistradora(ArrayList<Venta> ventasDia) {
-        this.ventasDia = ventasDia;
+    public CajaRegistradora(){
+        ventasDia = new ArrayList<>();
     }
     
     public void addVenta(Venta venta){

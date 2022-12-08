@@ -16,6 +16,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import tnt.almacen.GestorInventario;
 import tnt.perfil.Cajero;
+import tnt.perfil.Perfil;
 
 /**
  * FXML Controller class
@@ -44,8 +45,8 @@ public class EDPerfilController implements Initializable {
     }
 
     private void add() {
-        String name = this.tfNombre.getText();
-        String user = this.tfUsuario.getText();
+        String name = this.tfNombre.getText().strip();
+        String user = this.tfUsuario.getText().strip();
         String password = this.tfPassword.getText();
 
         Cajero cajero = new Cajero(name, user, password);
@@ -67,8 +68,8 @@ public class EDPerfilController implements Initializable {
     }
 
     private void actualizar(int index) {
-        String name = this.tfNombre.getText();
-        String user = this.tfUsuario.getText();
+        String name = this.tfNombre.getText().strip();
+        String user = this.tfUsuario.getText().strip();
         String password = this.tfPassword.getText();
 
         Cajero cajero = new Cajero(name, user, password);
@@ -88,14 +89,12 @@ public class EDPerfilController implements Initializable {
 
     }
 
-    public void setIndexPerfil(int indexPerfil) {
-        this.indexPerfil = indexPerfil;
-
-        Cajero cajero = (Cajero) inventario.inventarioPerfil.buscar(indexPerfil);
-
-        String name = cajero.getName();
-        String user = cajero.getUser();
-        String password = cajero.getPassword();
+    public void setIndexPerfil(Perfil perfil, int index) {
+        this.indexPerfil = index;
+        
+        String name = perfil.getName();
+        String user = perfil.getUser();
+        String password = perfil.getPassword();
 
         this.tfNombre.setText(name);
         this.tfUsuario.setText(user);

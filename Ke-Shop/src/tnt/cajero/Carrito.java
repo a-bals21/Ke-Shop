@@ -14,8 +14,8 @@ import tnt.publicacion.Publicacion;
 public class Carrito {
     private ArrayList<Publicacion> productos;
 
-    public Carrito(ArrayList<Publicacion> productos) {
-        this.productos = productos;
+    public Carrito() {
+        productos = new ArrayList<>();
     }
     
     public void addProducto(Publicacion publicacion) {

@@ -12,6 +12,8 @@ import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.property.ReadOnlyObjectWrapper;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -27,18 +29,20 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.util.Callback;
 import tnt.almacen.GestorInventario;
 import tnt.cajero.Venta;
 import tnt.perfil.Perfil;
 import tnt.publicacion.Publicacion;
 
 /**
- * FXML Controller class
+ * Controldador para la modificacion de los datos persistentes
  *
  * @author Angel Balderas
  */
@@ -116,6 +120,8 @@ public class AdministracionController implements Initializable {
     private Button btnFiltrarVenta;
     @FXML
     private DatePicker dpFecha;
+    @FXML
+    private TableColumn<Perfil, String> colPasswordPerfil;
 
     /**
      * Inicia el acceso al inventario
@@ -146,9 +152,6 @@ public class AdministracionController implements Initializable {
         ArrayList<Perfil> perfiles = inventario.inventarioPerfil.obtenerInventario();
         ObservableList<Perfil> olPerfiles = FXCollections.observableArrayList();
 
-        this.colNombrePerfil.setCellValueFactory(new PropertyValueFactory("name"));
-        this.colUsuarioPerfil.setCellValueFactory(new PropertyValueFactory("user"));
-
         for (Perfil temp : perfiles) {
             olPerfiles.add(temp);
         }
@@ -164,11 +167,6 @@ public class AdministracionController implements Initializable {
         ArrayList<Publicacion> productos = inventario.inventarioPublicacion.obtenerInventario();
         ObservableList<Publicacion> olProductos = FXCollections.observableArrayList();
 
-        this.colNombreProducto.setCellValueFactory(new PropertyValueFactory("name"));
-        this.colCodigoProducto.setCellValueFactory(new PropertyValueFactory("codigo"));
-        this.colDescripcionProducto.setCellValueFactory(new PropertyValueFactory("descripcion"));
-        this.colPrecioProducto.setCellValueFactory(new PropertyValueFactory("precio"));
-
         for (Publicacion temp : productos) {
             olProductos.add(temp);
         }
@@ -182,12 +180,6 @@ public class AdministracionController implements Initializable {
     public void actualizarTablaVentas() {
         ArrayList<Venta> ventas = inventario.inventarioVenta.obtenerInventario();
         ObservableList<Venta> olVentas = FXCollections.observableArrayList();
-
-        this.colFechaVenta.setCellValueFactory(new PropertyValueFactory("fecha"));
-        this.colProductosVenta.setCellValueFactory(new PropertyValueFactory("productos"));
-        this.colMontoVenta.setCellValueFactory(new PropertyValueFactory("venta"));
-        this.colPagoVenta.setCellValueFactory(new PropertyValueFactory("pago"));
-        this.colCambioVenta.setCellValueFactory(new PropertyValueFactory("cambio"));
 
         for (Venta temp : ventas) {
             olVentas.add(temp);
@@ -207,12 +199,37 @@ public class AdministracionController implements Initializable {
         alerta.show();
     }
 
+    private void msgFiltro() {
+        Alert alerta = new Alert(Alert.AlertType.WARNING);
+
+        alerta.setTitle("ADVERTENCIA");
+        alerta.setHeaderText("Debe seleccionar un filtro primero");
+        alerta.show();
+    }
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        //Tabla de Perfiles
+        this.colNombrePerfil.setCellValueFactory(new PropertyValueFactory("name"));
+        this.colUsuarioPerfil.setCellValueFactory(new PropertyValueFactory("user"));
+        this.colPasswordPerfil.setCellValueFactory((CellDataFeatures<Perfil, String> p) 
+                -> new ReadOnlyObjectWrapper(p.getValue().getPassword().replaceAll("[a-zA-Z0-9]", "*")));
+        
+        //Tabla de Productos
+        this.colNombreProducto.setCellValueFactory(new PropertyValueFactory("name"));
+        this.colCodigoProducto.setCellValueFactory(new PropertyValueFactory("codigo"));
+        this.colDescripcionProducto.setCellValueFactory(new PropertyValueFactory("descripcion"));
+        this.colPrecioProducto.setCellValueFactory(new PropertyValueFactory("precio"));
+        
+        //Tabla de Ventas
+        this.colFechaVenta.setCellValueFactory(new PropertyValueFactory("fecha"));
+        this.colProductosVenta.setCellValueFactory(new PropertyValueFactory("productos"));
+        this.colMontoVenta.setCellValueFactory(new PropertyValueFactory("venta"));
+        this.colPagoVenta.setCellValueFactory(new PropertyValueFactory("pago"));
+        this.colCambioVenta.setCellValueFactory(new PropertyValueFactory("cambio"));
     }
 
     /**
@@ -305,9 +322,16 @@ public class AdministracionController implements Initializable {
     private void editar(ActionEvent event) {
         try {
             if (event.getSource().equals(this.btnEditarPerfil)) {
-                int index = tvwPerfiles.getSelectionModel().getSelectedIndex();
+                Perfil perfilSel = tvwPerfiles.getSelectionModel().getSelectedItem();
 
-                if (index != -1) {
+                int index = 0;
+
+                if (perfilSel != null) {
+                    for (Perfil temp : inventario.inventarioPerfil.obtenerInventario()) {
+                        if (!perfilSel.equals(temp)) {
+                            index++;
+                        }
+                    }
 
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/tnt/gui/EDPerfil.fxml"));
                     Parent root = loader.load();
@@ -321,15 +345,23 @@ public class AdministracionController implements Initializable {
 
                     stage.show();
 
-                    controlador.setIndexPerfil(index);
+                    controlador.setIndexPerfil(perfilSel, index);
                     controlador.iniciar(inventario, this, 1);
                 } else {
                     msgNoSeleccion();
                 }
             } else if (event.getSource().equals(this.btnEditarProducto)) {
-                int index = tvwProductos.getSelectionModel().getSelectedIndex();
+                Publicacion publicacionSel = tvwProductos.getSelectionModel().getSelectedItem();
 
-                if (index != -1) {
+                int index = 0;
+
+                if (publicacionSel != null) {
+                    for (Publicacion temp : inventario.inventarioPublicacion.obtenerInventario()) {
+                        if (!publicacionSel.equals(temp)) {
+                            index++;
+                        }
+                    }
+
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/tnt/gui/EDPublicacion.fxml"));
                     Parent root = loader.load();
                     EDPublicacionController controlador = loader.getController();
@@ -342,7 +374,7 @@ public class AdministracionController implements Initializable {
 
                     stage.show();
 
-                    controlador.setIndexProducto(index);
+                    controlador.setIndexProducto(publicacionSel, index);
                     controlador.iniciar(inventario, this, 1);
                 } else {
                     msgNoSeleccion();
@@ -362,24 +394,42 @@ public class AdministracionController implements Initializable {
     @FXML
     private void eliminar(ActionEvent event) {
         if (event.getSource().equals(this.btnEliminarPerfil)) {
-            int index = tvwPerfiles.getSelectionModel().getSelectedIndex();
+            Perfil perfilSel = tvwPerfiles.getSelectionModel().getSelectedItem();
 
-            if (index == 0) {
-                Alert alerta = new Alert(Alert.AlertType.WARNING);
+            int index = 0;
 
-                alerta.setTitle("ADVERTENCIA");
-                alerta.setHeaderText("No puedes eliminar el perfil del administrador");
-                alerta.show();
-            } else if (index != -1) {
-                inventario.inventarioPerfil.borrar(index);
-                actualizarTablaPerfiles();
+            if (perfilSel != null) {
+                if (index == 0) {
+                    Alert alerta = new Alert(Alert.AlertType.WARNING);
+
+                    alerta.setTitle("ADVERTENCIA");
+                    alerta.setHeaderText("No puedes eliminar el perfil del administrador");
+                    alerta.show();
+                } else {
+                    for (Perfil temp : inventario.inventarioPerfil.obtenerInventario()) {
+                        if (!perfilSel.equals(temp)) {
+                            index++;
+                        }
+                    }
+
+                    inventario.inventarioPerfil.borrar(index);
+                    actualizarTablaPerfiles();
+                }
             } else {
                 msgNoSeleccion();
             }
         } else if (event.getSource().equals(this.btnEliminarProducto)) {
-            int index = tvwProductos.getSelectionModel().getSelectedIndex();
+            Publicacion publicacionSel = tvwProductos.getSelectionModel().getSelectedItem();
 
-            if (index != -1) {
+            int index = 0;
+
+            if (publicacionSel != null) {
+                for (Publicacion temp : inventario.inventarioPublicacion.obtenerInventario()) {
+                    if (!publicacionSel.equals(temp)) {
+                        index++;
+                    }
+                }
+
                 inventario.inventarioPublicacion.borrar(index);
                 actualizarTablaProductos();
             } else {
@@ -399,31 +449,30 @@ public class AdministracionController implements Initializable {
         String filtro = this.cbFiltroProducto.getValue();
         String buscar = this.tfBuscadorProducto.getText().toUpperCase();
 
-        ArrayList<Publicacion> productos = GestorInventario.inventarioPublicacion.obtenerInventario();
-        ObservableList<Publicacion> olProductos = FXCollections.observableArrayList();
-
-        this.colNombreProducto.setCellValueFactory(new PropertyValueFactory("name"));
-        this.colCodigoProducto.setCellValueFactory(new PropertyValueFactory("codigo"));
-        this.colDescripcionProducto.setCellValueFactory(new PropertyValueFactory("descripcion"));
-        this.colPrecioProducto.setCellValueFactory(new PropertyValueFactory("precio"));
-
-        for (Publicacion temp : productos) {
-            if (filtro.equals("Nombre")) {
-                if (temp.getName().toUpperCase().contains(buscar)) {
-                    olProductos.add(temp);
-                }
-            } else if (filtro.equals("Codigo")) {
-                if (temp.getCodigo().toUpperCase().contains(buscar)) {
-                    olProductos.add(temp);
-                }
-            } else {
-                if (temp.getDescripcion().toUpperCase().contains(buscar)) {
-                    olProductos.add(temp);
+        if (filtro != null) {
+            ArrayList<Publicacion> productos = GestorInventario.inventarioPublicacion.obtenerInventario();
+            ObservableList<Publicacion> olProductos = FXCollections.observableArrayList();
+            
+            for (Publicacion temp : productos) {
+                if (filtro.equals("Nombre")) {
+                    if (temp.getName().toUpperCase().contains(buscar)) {
+                        olProductos.add(temp);
+                    }
+                } else if (filtro.equals("Codigo")) {
+                    if (temp.getCodigo().toUpperCase().contains(buscar)) {
+                        olProductos.add(temp);
+                    }
+                } else {
+                    if (temp.getDescripcion().toUpperCase().contains(buscar)) {
+                        olProductos.add(temp);
+                    }
                 }
             }
-        }
 
-        tvwProductos.setItems(olProductos);
+            tvwProductos.setItems(olProductos);
+        } else {
+            msgFiltro();
+        }
     }
 
     /**
@@ -445,64 +494,64 @@ public class AdministracionController implements Initializable {
         alerta.setHeaderText("Se ha guardado correctamente");
         alerta.show();
     }
-    
+
     /**
-     * Detecta si se filtro o se busco, y hace la respectiva operacion.
-     * Busca en una fecha en concreto, En este año, mes u hoy
-     * @param event 
+     * Detecta si se filtro o se busco, y hace la respectiva operacion. Busca en
+     * una fecha en concreto, En este año, mes u hoy
+     *
+     * @param event
      */
     @FXML
     private void aplicarFiltroVenta(ActionEvent event) {
         String filtro = this.cbFiltroVenta.getValue();
+
         LocalDate fechapck = dpFecha.getValue();
         String buscar = this.tfBuscadorProducto.getText().toUpperCase();
 
         ArrayList<Venta> ventas = inventario.inventarioVenta.obtenerInventario();
         ObservableList<Venta> olVentas = FXCollections.observableArrayList();
-
-        this.colFechaVenta.setCellValueFactory(new PropertyValueFactory("fecha"));
-        this.colProductosVenta.setCellValueFactory(new PropertyValueFactory("productos"));
-        this.colMontoVenta.setCellValueFactory(new PropertyValueFactory("venta"));
-        this.colPagoVenta.setCellValueFactory(new PropertyValueFactory("pago"));
-        this.colCambioVenta.setCellValueFactory(new PropertyValueFactory("cambio"));
-
-        Date fechaIngresada = new Date(
-                fechapck.getYear(),
-                fechapck.getMonthValue(),
-                fechapck.getDayOfMonth()
-        );
         
-        Date fechaActual = new Date();
-        
-        for (Venta temp : ventas) {
-            if (event.getSource().equals(this.btnFiltrarVenta)) {
-                switch (this.cbFiltroVenta.getValue()) {
-                    case "Este año":
-                        if (temp.getFecha().getYear()== fechaActual.getYear()) {
-                            olVentas.add(temp);
-                        }
-                        break;
-                    case "Este mes":
-                        if (temp.getFecha().getMonth() == fechaActual.getMonth()) {
-                            olVentas.add(temp);
-                        }
-                        break;
-                    case "Hoy":
-                        if (temp.getFecha().getDate() == fechaActual.getDate()) {
-                            olVentas.add(temp);
-                        }
-                        break;
-                    default:
-                        break;
-                }
-            } else if (event.getSource().equals(this.btnBuscarVenta)) {
-                if (fechaIngresada.equals(temp.getFecha())) {
-                    olVentas.add(temp);
+        if (fechapck != null && filtro == null) {
+            Date fechaIngresada = new Date(
+                    fechapck.getYear(),
+                    fechapck.getMonthValue(),
+                    fechapck.getDayOfMonth()
+            );
+
+            Date fechaActual = new Date();
+
+            for (Venta temp : ventas) {
+                if (event.getSource().equals(this.btnFiltrarVenta)) {
+                    switch (this.cbFiltroVenta.getValue()) {
+                        case "Este año":
+                            if (temp.getFecha().getYear() == fechaActual.getYear()) {
+                                olVentas.add(temp);
+                            }
+                            break;
+                        case "Este mes":
+                            if (temp.getFecha().getMonth() == fechaActual.getMonth()) {
+                                olVentas.add(temp);
+                            }
+                            break;
+                        case "Hoy":
+                            if (temp.getFecha().getDate() == fechaActual.getDate()) {
+                                olVentas.add(temp);
+                            }
+                            break;
+                        default:
+                            break;
+                    }
+                } else if (event.getSource().equals(this.btnBuscarVenta)) {
+                    if (fechaIngresada.equals(temp.getFecha())) {
+                        olVentas.add(temp);
+                    }
                 }
             }
+            
+            tvwVentas.setItems(olVentas);
+        } else {
+            msgFiltro();
         }
-
-        tvwVentas.setItems(olVentas);
     }
 
     /**

@@ -64,12 +64,27 @@
                      <right>
                         <HBox alignment="CENTER" prefHeight="100.0" spacing="20.0" BorderPane.alignment="CENTER">
                            <children>
-                              <Label maxHeight="-Infinity" maxWidth="-Infinity" styleClass="subtitulo-c" text="dd/mm/aaaa" />
-                              <Label styleClass="subtitulo-c" text="Pagó: $0000.00" />
+                              <Label fx:id="lFecha" maxHeight="-Infinity" maxWidth="-Infinity" styleClass="subtitulo-c" text="dd/mm/aaaa" />
+                              <HBox alignment="CENTER" fillHeight="false">
+                                 <children>
+                                    <Label styleClass="subtitulo-c" text="Pagó: $" />
+                                    <Label fx:id="lPago" layoutX="10.0" layoutY="45.0" styleClass="subtitulo-c" text="0000.00" />
+                                 </children>
+                              </HBox>
                               <VBox alignment="CENTER_RIGHT">
                                  <children>
-                                    <Label styleClass="titulo-c" text="Total: $0000.00" />
-                                    <Label layoutX="46.0" layoutY="67.0" styleClass="titulo-c" text="Cambio: $0000.0" />
+                                    <HBox alignment="CENTER" fillHeight="false">
+                                       <children>
+                                          <Label styleClass="subtitulo-c" text="Total: $" />
+                                          <Label fx:id="lTotal" layoutX="10.0" layoutY="45.0" styleClass="subtitulo-c" text="0000.00" />
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER" fillHeight="false" layoutX="10.0" layoutY="27.0">
+                                       <children>
+                                          <Label styleClass="subtitulo-c" text="Cambio: $" />
+                                          <Label fx:id="lCambio" layoutX="10.0" layoutY="45.0" styleClass="subtitulo-c" text="0000.00" />
+                                       </children>
+                                    </HBox>
                                  </children>
                                  <HBox.margin>
                                     <Insets right="20.0" />
@@ -89,16 +104,16 @@
                         <Insets />
                      </opaqueInsets>
                      <center>
-                        <TableView fx:id="tvwCarrito" editable="true" focusTraversable="false" maxWidth="-Infinity" minWidth="600.0" prefWidth="800.0" tableMenuButtonVisible="true" BorderPane.alignment="CENTER">
+                        <TableView fx:id="tvwCarrito" focusTraversable="false" maxWidth="-Infinity" minWidth="600.0" prefWidth="800.0" BorderPane.alignment="CENTER">
                            <padding>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </padding>
                            <columns>
-                              <TableColumn fx:id="tcCodigo" prefWidth="75.0" text="Codigo" />
-                              <TableColumn prefWidth="75.0" text="Producto" />
-                              <TableColumn prefWidth="75.0" text="Precio Unidad" />
-                              <TableColumn prefWidth="75.0" text="Cantidad" />
-                              <TableColumn prefWidth="75.0" text="Precio Total" />
+                              <TableColumn fx:id="colCodigo" prefWidth="75.0" text="Codigo" />
+                              <TableColumn fx:id="colProducto" prefWidth="75.0" text="Producto" />
+                              <TableColumn fx:id="colPrecioU" prefWidth="75.0" text="Precio Unidad" />
+                              <TableColumn fx:id="colCantidad" prefWidth="75.0" text="Cantidad" />
+                              <TableColumn fx:id="colPrecioT" prefWidth="75.0" text="Precio Total" />
                            </columns>
                            <columnResizePolicy>
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -110,22 +125,41 @@
                <right>
                   <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <center>
-                        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0" BorderPane.alignment="CENTER">
+                        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0" style="-fx-background-color: -fx-secondary-color;" BorderPane.alignment="CENTER">
                            <children>
                               <Button fx:id="btnAddProductoInt" mnemonicParsing="false" onAction="#addProducto" prefWidth="150.0" styleClass="botones" text="Añadir producto" wrapText="true" />
-                              <Button fx:id="btnAddProductoExt" layoutX="56.0" layoutY="20.0" maxWidth="-Infinity" mnemonicParsing="false" onAction="#registrarProductoExterno" prefWidth="150.0" styleClass="botones" text="Registrar producto externo" textAlignment="CENTER" wrapText="true" />
+                              <Button fx:id="btnRegProductoExt" layoutX="56.0" layoutY="20.0" maxWidth="-Infinity" mnemonicParsing="false" onAction="#registrarProductoExterno" prefWidth="150.0" styleClass="botones" text="Registrar producto externo" textAlignment="CENTER" wrapText="true" />
+                              <Button fx:id="btnInsertarPago" maxWidth="-Infinity" mnemonicParsing="false" onAction="#setPago" prefWidth="150.0" styleClass="botones" text="Introducir Pago" textAlignment="CENTER" wrapText="true" />
+                              <Button fx:id="btnCerrarVenta" layoutX="35.0" layoutY="121.0" maxWidth="-Infinity" mnemonicParsing="false" onAction="#cerrarVenta" prefWidth="150.0" styleClass="botones" text="Cerrar Venta" textAlignment="CENTER" wrapText="true" />
                            </children>
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                           <BorderPane.margin>
+                              <Insets />
+                           </BorderPane.margin>
                         </VBox>
                      </center>
-                     <bottom>
-                        <Button fx:id="btnVenta" maxWidth="-Infinity" mnemonicParsing="false" onAction="#cerrarVenta" prefWidth="150.0" styleClass="botones" text="Cerrar Venta" textAlignment="CENTER" wrapText="true" BorderPane.alignment="CENTER" />
-                     </bottom>
                      <BorderPane.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                        <Insets />
                      </BorderPane.margin>
+                     <bottom>
+                        <VBox alignment="CENTER" spacing="10.0" BorderPane.alignment="CENTER">
+                           <BorderPane.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="10.0" />
+                           </BorderPane.margin>
+                           <children>
+                              <Button fx:id="btnEliminarProducto" layoutX="10.0" layoutY="10.0" maxWidth="-Infinity" mnemonicParsing="false" onAction="#eliminar" prefWidth="150.0" styleClass="botones" text="Eliminar Producto" textAlignment="CENTER" wrapText="true" />
+                              <Button fx:id="btnCerrarCaja" maxWidth="-Infinity" mnemonicParsing="false" onAction="#cerrarCaja" prefWidth="150.0" styleClass="botones" text="Cerrar Caja" textAlignment="CENTER" wrapText="true" />
+                           </children>
+                        </VBox>
+                     </bottom>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
                   </BorderPane>
                </right>
             </BorderPane>
