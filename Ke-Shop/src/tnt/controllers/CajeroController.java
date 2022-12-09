@@ -12,7 +12,6 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.beans.property.ReadOnlyObjectWrapper;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -28,17 +27,17 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import javafx.util.Callback;
 import tnt.almacen.GestorInventario;
 import tnt.cajero.Cajero;
 import tnt.perfil.Perfil;
 import tnt.publicacion.Publicacion;
 
 /**
- * FXML Controller class
+ * Controla el acceso al modo cajero
  *
  * @author Angel Balderas
  */
@@ -80,9 +79,11 @@ public class CajeroController implements Initializable {
     @FXML
     private TableColumn<?, ?> colCantidad;
     @FXML
-    private TableColumn<Publicacion, String>colPrecioT;
+    private TableColumn<Publicacion, String> colPrecioT;
     @FXML
     private Button btnEliminarProducto;
+    @FXML
+    private TextField tfPago;
 
     public void setUsuario(Perfil perfil) {
         lNombreUsuario.setText(perfil.getName());
@@ -96,22 +97,41 @@ public class CajeroController implements Initializable {
         this.inventario = inventario;
 
         cajero = new Cajero(inventario);
-        
-        actualizarTabla();
     }
-    
+
     public void actualizarTabla() {
         ArrayList<Publicacion> productos = cajero.obtenerCarrito();
         ObservableList<Publicacion> olProductos = FXCollections.observableArrayList();
-                
-        productos.add(new Publicacion("Coca cola", 23d, "242424", "Coca"));
-        productos.get(0).setCantidad(1);
 
         for (Publicacion temp : productos) {
             olProductos.add(temp);
         }
 
         tvwCarrito.setItems(olProductos);
+        lTotal.setText(String.valueOf(cajero.suma()));
+        lCambio.setText(String.valueOf(cajero.cambio(pago)));
+    }
+
+    public void addProducto(Publicacion producto) {
+        cajero.addProducto(producto);
+
+        actualizarTabla();
+    }
+
+    public void msgNoSeleccion() {
+        Alert alerta = new Alert(Alert.AlertType.WARNING);
+
+        alerta.setTitle("ADVERTENCIA");
+        alerta.setHeaderText("Debe seleccionar algo primero");
+        alerta.show();
+    }
+
+    public void msgSoloNumeros() {
+        Alert alerta = new Alert(Alert.AlertType.WARNING);
+
+        alerta.setTitle("ADVERTENCIA");
+        alerta.setHeaderText("Debe ingresar solo números en pago");
+        alerta.show();
     }
 
     /**
@@ -119,12 +139,12 @@ public class CajeroController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+
         this.colProducto.setCellValueFactory(new PropertyValueFactory("name"));
         this.colCodigo.setCellValueFactory(new PropertyValueFactory("codigo"));
         this.colPrecioU.setCellValueFactory(new PropertyValueFactory("precio"));
         this.colCantidad.setCellValueFactory(new PropertyValueFactory("cantidad"));
-        this.colPrecioT.setCellValueFactory((CellDataFeatures<Publicacion, String> p) 
+        this.colPrecioT.setCellValueFactory((CellDataFeatures<Publicacion, String> p)
                 -> new ReadOnlyObjectWrapper(p.getValue().getPrecio() * p.getValue().getCantidad()));
     }
 
@@ -162,14 +182,28 @@ public class CajeroController implements Initializable {
 
     @FXML
     private void cerrarVenta(ActionEvent event) {
-        Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
+        if (pago != 0) {
+            Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
 
-        alerta.setTitle("Confirmar venta");
-        alerta.setHeaderText("¿Realmente quiere cerrar la venta?");
+            alerta.setTitle("Confirmar venta");
+            alerta.setHeaderText("¿Realmente quiere cerrar la venta?");
 
-        alerta.showAndWait();
-        if (alerta.getResult().equals(ButtonType.OK)) {
+            alerta.showAndWait();
+            if (alerta.getResult().equals(ButtonType.OK)) {
+                this.pago = 0d;
+                this.lPago.setText("0000.00");
+                this.lCambio.setText("0000.00");
 
+                cajero.cerrarVenta(pago);
+
+                actualizarTabla();
+            }
+        } else {
+            Alert alerta = new Alert(Alert.AlertType.WARNING);
+
+            alerta.setTitle("ADVERTENCIA");
+            alerta.setHeaderText("Debe insertar el pago");
+            alerta.show();
         }
     }
 
@@ -184,7 +218,7 @@ public class CajeroController implements Initializable {
             Stage stage = new Stage();
 
             stage.setScene(escena);
-            stage.setTitle("Nuevo Cajero");
+            stage.setTitle("Buscador Prod.");
 
             stage.show();
 
@@ -196,7 +230,23 @@ public class CajeroController implements Initializable {
 
     @FXML
     private void registrarProductoExterno(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/tnt/gui/EDPublicacionE.fxml"));
+            Parent root = loader.load();
+            EDPublicacionEController controlador = loader.getController();
 
+            Scene escena = new Scene(root);
+            Stage stage = new Stage();
+
+            stage.setScene(escena);
+            stage.setTitle("Registro Prod. Ext.");
+
+            stage.show();
+
+            controlador.iniciar(inventario);
+        } catch (IOException ioe) {
+            System.out.println(ioe.getMessage());
+        }
     }
 
     @FXML
@@ -208,24 +258,54 @@ public class CajeroController implements Initializable {
 
         alerta.showAndWait();
         if (alerta.getResult().equals(ButtonType.OK)) {
-            
+            Alert cierre = new Alert(Alert.AlertType.CONFIRMATION);
+
+            cierre.setTitle("Caja cerrada");
+            cierre.setHeaderText("Hoy se vendió un total de " + String.valueOf(cajero.cerrarCaja() + "\nLas ventas se han almacenado"));
+
+            this.pago = 0d;
+            this.lPago.setText("0000.00");
+            this.lCambio.setText("0000.00");
+
+            cierre.showAndWait();
+
+            cajero.cerrarCaja();
+
+            actualizarTabla();
         }
     }
 
     @FXML
     private void setPago(ActionEvent event) {
+        try {
+            this.pago = Double.parseDouble(this.tfPago.getText());
+            lPago.setText(String.valueOf(this.pago));
+
+            actualizarTabla();
+
+            tfPago.setText("");
+        } catch (NumberFormatException nfe) {
+            msgSoloNumeros();
+        }
     }
 
     @FXML
     private void eliminar(ActionEvent event) {
         Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
+        Publicacion producto = tvwCarrito.getSelectionModel().getSelectedItem();
 
-        alerta.setTitle("Confirmar eliminación");
-        alerta.setHeaderText("¿Realmente quiere eliminar el producto seleccionado?");
+        if (producto != null) {
+            alerta.setTitle("Confirmar eliminación");
+            alerta.setHeaderText("¿Realmente quiere eliminar el producto seleccionado?");
 
-        alerta.showAndWait();
-        if (alerta.getResult().equals(ButtonType.OK)) {
-            
+            alerta.showAndWait();
+            if (alerta.getResult().equals(ButtonType.OK)) {
+                cajero.delProducto(producto);
+
+                actualizarTabla();
+            }
+        } else {
+            msgNoSeleccion();
         }
     }
 

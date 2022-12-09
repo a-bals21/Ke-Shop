@@ -77,7 +77,7 @@ public class AdministracionController implements Initializable {
     @FXML
     private TableColumn<?, ?> colFechaVenta;
     @FXML
-    private TableColumn<?, ?> colProductosVenta;
+    private TableColumn<Venta, String> colProductosVenta;
     @FXML
     private TableColumn<?, ?> colMontoVenta;
     @FXML
@@ -124,7 +124,7 @@ public class AdministracionController implements Initializable {
     private TableColumn<Perfil, String> colPasswordPerfil;
 
     /**
-     * Inicia el acceso al inventario
+     * Controla el acceso al inventario
      *
      * @param inventario
      */
@@ -132,7 +132,7 @@ public class AdministracionController implements Initializable {
         this.inventario = inventario;
 
         cbFiltroProducto.getItems().addAll("Nombre", "Código", "Descripción");
-        cbFiltroVenta.getItems().addAll("Este año", "Esta mes", "Hoy");
+        cbFiltroVenta.getItems().addAll("Este año", "Este mes", "Hoy");
     }
 
     /**
@@ -207,6 +207,24 @@ public class AdministracionController implements Initializable {
         alerta.show();
     }
 
+    private void msgNoFecha() {
+        Alert alerta = new Alert(Alert.AlertType.WARNING);
+
+        alerta.setTitle("ADVERTENCIA");
+        alerta.setHeaderText("Debe seleccionar una fecha primero");
+        alerta.show();
+    }
+
+    public String obtenerStringDeArr(ArrayList<Publicacion> arr) {
+        String cuerpo = "NULL";
+
+        for (Publicacion temp : arr) {
+            cuerpo += temp.getName() + " Cant. " + temp.getCantidad() + "\n";
+        }
+
+        return cuerpo;
+    }
+
     /**
      * Initializes the controller class.
      */
@@ -215,18 +233,22 @@ public class AdministracionController implements Initializable {
         //Tabla de Perfiles
         this.colNombrePerfil.setCellValueFactory(new PropertyValueFactory("name"));
         this.colUsuarioPerfil.setCellValueFactory(new PropertyValueFactory("user"));
-        this.colPasswordPerfil.setCellValueFactory((CellDataFeatures<Perfil, String> p) 
-                -> new ReadOnlyObjectWrapper(p.getValue().getPassword().replaceAll("[a-zA-Z0-9]", "*")));
-        
+        this.colPasswordPerfil.setCellValueFactory((CellDataFeatures<Perfil, String> p)
+                -> new ReadOnlyObjectWrapper(p.getValue().getPassword().replaceAll("[a-zA-Z0-9]", "*"))
+        );
+
         //Tabla de Productos
         this.colNombreProducto.setCellValueFactory(new PropertyValueFactory("name"));
         this.colCodigoProducto.setCellValueFactory(new PropertyValueFactory("codigo"));
         this.colDescripcionProducto.setCellValueFactory(new PropertyValueFactory("descripcion"));
         this.colPrecioProducto.setCellValueFactory(new PropertyValueFactory("precio"));
-        
+
         //Tabla de Ventas
         this.colFechaVenta.setCellValueFactory(new PropertyValueFactory("fecha"));
-        this.colProductosVenta.setCellValueFactory(new PropertyValueFactory("productos"));
+        //this.colProductosVenta.setCellValueFactory(new PropertyValueFactory("productos"));
+        this.colProductosVenta.setCellValueFactory((CellDataFeatures<Venta, String> p)
+                -> new ReadOnlyObjectWrapper(obtenerStringDeArr(p.getValue().getProductos()))
+        );
         this.colMontoVenta.setCellValueFactory(new PropertyValueFactory("venta"));
         this.colPagoVenta.setCellValueFactory(new PropertyValueFactory("pago"));
         this.colCambioVenta.setCellValueFactory(new PropertyValueFactory("cambio"));
@@ -328,9 +350,10 @@ public class AdministracionController implements Initializable {
 
                 if (perfilSel != null) {
                     for (Perfil temp : inventario.inventarioPerfil.obtenerInventario()) {
-                        if (!perfilSel.equals(temp)) {
-                            index++;
+                        if (perfilSel.equals(temp)) {
+                            break;
                         }
+                        index++;
                     }
 
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/tnt/gui/EDPerfil.fxml"));
@@ -357,9 +380,10 @@ public class AdministracionController implements Initializable {
 
                 if (publicacionSel != null) {
                     for (Publicacion temp : inventario.inventarioPublicacion.obtenerInventario()) {
-                        if (!publicacionSel.equals(temp)) {
-                            index++;
+                        if (publicacionSel.equals(temp)) {
+                            break;
                         }
+                        index++;
                     }
 
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/tnt/gui/EDPublicacion.fxml"));
@@ -407,9 +431,10 @@ public class AdministracionController implements Initializable {
                     alerta.show();
                 } else {
                     for (Perfil temp : inventario.inventarioPerfil.obtenerInventario()) {
-                        if (!perfilSel.equals(temp)) {
-                            index++;
+                        if (perfilSel.equals(temp)) {
+                            break;
                         }
+                        index++;
                     }
 
                     inventario.inventarioPerfil.borrar(index);
@@ -425,9 +450,10 @@ public class AdministracionController implements Initializable {
 
             if (publicacionSel != null) {
                 for (Publicacion temp : inventario.inventarioPublicacion.obtenerInventario()) {
-                    if (!publicacionSel.equals(temp)) {
-                        index++;
+                    if (publicacionSel.equals(temp)) {
+                        break;
                     }
+                    index++;
                 }
 
                 inventario.inventarioPublicacion.borrar(index);
@@ -452,7 +478,7 @@ public class AdministracionController implements Initializable {
         if (filtro != null) {
             ArrayList<Publicacion> productos = GestorInventario.inventarioPublicacion.obtenerInventario();
             ObservableList<Publicacion> olProductos = FXCollections.observableArrayList();
-            
+
             for (Publicacion temp : productos) {
                 if (filtro.equals("Nombre")) {
                     if (temp.getName().toUpperCase().contains(buscar)) {
@@ -503,51 +529,36 @@ public class AdministracionController implements Initializable {
      */
     @FXML
     private void aplicarFiltroVenta(ActionEvent event) {
-        String filtro = this.cbFiltroVenta.getValue();
-
-        LocalDate fechapck = dpFecha.getValue();
-        String buscar = this.tfBuscadorProducto.getText().toUpperCase();
-
         ArrayList<Venta> ventas = inventario.inventarioVenta.obtenerInventario();
         ObservableList<Venta> olVentas = FXCollections.observableArrayList();
-        
-        if (fechapck != null && filtro == null) {
-            Date fechaIngresada = new Date(
-                    fechapck.getYear(),
-                    fechapck.getMonthValue(),
-                    fechapck.getDayOfMonth()
-            );
 
+        String filtro = this.cbFiltroVenta.getValue();
+
+        if (filtro != null) {
             Date fechaActual = new Date();
 
             for (Venta temp : ventas) {
-                if (event.getSource().equals(this.btnFiltrarVenta)) {
-                    switch (this.cbFiltroVenta.getValue()) {
-                        case "Este año":
-                            if (temp.getFecha().getYear() == fechaActual.getYear()) {
-                                olVentas.add(temp);
-                            }
-                            break;
-                        case "Este mes":
-                            if (temp.getFecha().getMonth() == fechaActual.getMonth()) {
-                                olVentas.add(temp);
-                            }
-                            break;
-                        case "Hoy":
-                            if (temp.getFecha().getDate() == fechaActual.getDate()) {
-                                olVentas.add(temp);
-                            }
-                            break;
-                        default:
-                            break;
-                    }
-                } else if (event.getSource().equals(this.btnBuscarVenta)) {
-                    if (fechaIngresada.equals(temp.getFecha())) {
-                        olVentas.add(temp);
-                    }
+                switch (this.cbFiltroVenta.getValue()) {
+                    case "Este año":
+                        if (temp.getFecha().getYear() == fechaActual.getYear()) {
+                            olVentas.add(temp);
+                        }
+                        break;
+                    case "Este mes":
+                        if (temp.getFecha().getMonth() == fechaActual.getMonth()) {
+                            olVentas.add(temp);
+                        }
+                        break;
+                    case "Hoy":
+                        if (temp.getFecha().getDate() == fechaActual.getDate()) {
+                            olVentas.add(temp);
+                        }
+                        break;
+                    default:
+                        break;
                 }
             }
-            
+
             tvwVentas.setItems(olVentas);
         } else {
             msgFiltro();
@@ -579,6 +590,29 @@ public class AdministracionController implements Initializable {
             actualizarTablaProductos();
         } else if (event.getSource().equals(this.btnRefrescarVentas)) {
             actualizarTablaVentas();
+        }
+    }
+
+    @FXML
+    private void aplicarBusquedaVenta(ActionEvent event) {
+        ArrayList<Venta> ventas = inventario.inventarioVenta.obtenerInventario();
+        ObservableList<Venta> olVentas = FXCollections.observableArrayList();
+
+        LocalDate fechapck = dpFecha.getValue();
+
+        if (fechapck != null) {
+            for (Venta temp : ventas) {
+                if (fechapck.getMonthValue() == (temp.getFecha().getMonth() + 1)
+                        && fechapck.getDayOfMonth() == temp.getFecha().getDate()
+                        && fechapck.getYear() == temp.getFecha().getYear()) {
+                    olVentas.add(temp);
+                }
+
+            }
+
+            tvwVentas.setItems(olVentas);
+        } else {
+            msgNoFecha();
         }
     }
 }

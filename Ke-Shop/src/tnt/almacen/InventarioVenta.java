@@ -39,10 +39,10 @@ public class InventarioVenta {
                 FileInputStream fis = new FileInputStream(ruta);
                 ObjectInputStream ois = new ObjectInputStream(fis);
                 
-                Venta temp;
+                Object temp;
         
-                while ((temp = (Venta) ois.readObject()) != null) {
-                    lista.add(temp);
+                while ((temp = ois.readObject()) != null) {
+                    lista.add((Venta) temp);
                 }
                 
                 System.out.println("Ventas cargadas");
@@ -62,13 +62,12 @@ public class InventarioVenta {
     public void guardarInvetario() {
         String ruta = rutaGuardado + "/ventas";
         
-        File perfiles = new File(ruta);
-        perfiles.delete();
+        File ventas = new File(ruta);
+        ventas.delete();
         
         try {
             FileOutputStream fos = new FileOutputStream(ruta, true);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
-            
             
             for (Venta temp: lista) {
                 oos.writeObject(temp);

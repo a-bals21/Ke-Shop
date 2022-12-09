@@ -15,9 +15,9 @@
             <TextField fx:id="tfBuscador" onKeyTyped="#buscar" promptText="Buscador" styleClass="campotexto" />
             <TableView fx:id="tvwResultados" prefHeight="200.0">
               <columns>
-                <TableColumn prefWidth="75.0" text="Código" />
-                  <TableColumn prefWidth="75.0" text="Nombre" />
-                <TableColumn prefWidth="75.0" text="Descripción" />
+                <TableColumn fx:id="colCodigo" prefWidth="75.0" text="Código" />
+                  <TableColumn fx:id="colNombre" prefWidth="75.0" text="Nombre" />
+                <TableColumn fx:id="colDescripcion" prefWidth="75.0" text="Descripción" />
               </columns>
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -26,7 +26,7 @@
                   <Insets />
                </VBox.margin>
             </TableView>
-            <TextField fx:id="tfCantidad" layoutX="15.0" layoutY="15.0" onAction="#agregar" promptText="Buscador" styleClass="campotexto" />
+            <TextField fx:id="tfCantidad" alignment="CENTER" layoutX="15.0" layoutY="15.0" maxWidth="100.0" onAction="#agregar" promptText="Cantidad" styleClass="campotexto" />
             <Button fx:id="btnAgregar" mnemonicParsing="false" onAction="#agregar" styleClass="botones" text="Agregar">
                <VBox.margin>
                   <Insets />

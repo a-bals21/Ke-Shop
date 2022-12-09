@@ -84,7 +84,6 @@ public class InventarioPerfil {
             FileOutputStream fos = new FileOutputStream(ruta, true);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             
-            
             for (Perfil temp: lista) {
                 oos.writeObject(temp);
             }

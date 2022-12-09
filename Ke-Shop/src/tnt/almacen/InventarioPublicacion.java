@@ -68,13 +68,12 @@ public class InventarioPublicacion {
     public void guardarInvetario() {
         String ruta = rutaGuardado + "/publicaciones";
         
-        File perfiles = new File(ruta);
-        perfiles.delete();
+        File productos = new File(ruta);
+        productos.delete();
         
         try {
             FileOutputStream fos = new FileOutputStream(ruta, true);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
-            
             
             for (Publicacion temp: lista) {
                 oos.writeObject(temp);

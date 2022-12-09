@@ -97,13 +97,12 @@ public class EDPublicacionController implements Initializable {
             } else {
                 msgVacío();
             }
-    }
-    catch (NumberFormatException nfe) {
+        } catch (NumberFormatException nfe) {
             msgSoloNumeros();
+        }
     }
-}
 
-public void setIndexProducto(Publicacion producto,int indexProducto) {
+    public void setIndexProducto(Publicacion producto, int indexProducto) {
         this.indexProducto = indexProducto;
 
         tfNombre.setText(producto.getName());
@@ -112,30 +111,6 @@ public void setIndexProducto(Publicacion producto,int indexProducto) {
         tfPrecio.setText(String.valueOf(producto.getPrecio()));
     }
 
-    /**
-     * Initializes the controller class.
-     */
-    @Override
-public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }
-
-    @FXML
-private void enviarDatos(ActionEvent event) {
-        switch (modo) {
-            case 0:
-                add();
-                break;
-            case 1:
-                actualizar(indexProducto);
-                break;
-            default:
-                Stage myStage = (Stage) this.btnIngresar.getScene().getWindow();
-                myStage.close();
-                break;
-        }
-    }
-    
     private void msgVacío() {
         Alert alerta = new Alert(Alert.AlertType.WARNING);
 
@@ -151,12 +126,36 @@ private void enviarDatos(ActionEvent event) {
         alerta.setHeaderText("Producto ya registrado");
         alerta.show();
     }
-    
+
     private void msgSoloNumeros() {
         Alert alerta = new Alert(Alert.AlertType.WARNING);
 
         alerta.setTitle("ADVERTENCIA");
         alerta.setHeaderText("En precio solo pueden ir números/precios");
         alerta.show();
+    }
+
+    /**
+     * Initializes the controller class.
+     */
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        // TODO
+    }
+
+    @FXML
+    private void enviarDatos(ActionEvent event) {
+        switch (modo) {
+            case 0:
+                add();
+                break;
+            case 1:
+                actualizar(indexProducto);
+                break;
+            default:
+                Stage myStage = (Stage) this.btnIngresar.getScene().getWindow();
+                myStage.close();
+                break;
+        }
     }
 }

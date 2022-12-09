@@ -8,6 +8,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -129,6 +130,7 @@
                            <children>
                               <Button fx:id="btnAddProductoInt" mnemonicParsing="false" onAction="#addProducto" prefWidth="150.0" styleClass="botones" text="Añadir producto" wrapText="true" />
                               <Button fx:id="btnRegProductoExt" layoutX="56.0" layoutY="20.0" maxWidth="-Infinity" mnemonicParsing="false" onAction="#registrarProductoExterno" prefWidth="150.0" styleClass="botones" text="Registrar producto externo" textAlignment="CENTER" wrapText="true" />
+                              <TextField fx:id="tfPago" onAction="#setPago" promptText="Pago" styleClass="campotexto" />
                               <Button fx:id="btnInsertarPago" maxWidth="-Infinity" mnemonicParsing="false" onAction="#setPago" prefWidth="150.0" styleClass="botones" text="Introducir Pago" textAlignment="CENTER" wrapText="true" />
                               <Button fx:id="btnCerrarVenta" layoutX="35.0" layoutY="121.0" maxWidth="-Infinity" mnemonicParsing="false" onAction="#cerrarVenta" prefWidth="150.0" styleClass="botones" text="Cerrar Venta" textAlignment="CENTER" wrapText="true" />
                            </children>
