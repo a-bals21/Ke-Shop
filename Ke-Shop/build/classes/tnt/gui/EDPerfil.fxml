@@ -21,7 +21,7 @@
             <TextField fx:id="tfNombre" promptText="Nombre Apellido" styleClass="campotexto" />
             <TextField fx:id="tfUsuario" layoutX="20.0" layoutY="20.0" promptText="Usuario" styleClass="campotexto" />
             <PasswordField fx:id="tfPassword" onAction="#enviarDatos" promptText="Contraseña" styleClass="campotexto" />
-            <Button fx:id="btnIngresar" mnemonicParsing="false" onAction="#enviarDatos" styleClass="botones" text="Registrar cajero" textAlignment="CENTER" />
+            <Button fx:id="btnIngresar" mnemonicParsing="false" onAction="#enviarDatos" styleClass="botones" text="Registrar perfil" textAlignment="CENTER" />
          </children>
       </VBox>
    </children>

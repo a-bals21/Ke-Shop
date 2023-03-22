@@ -15,6 +15,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import tnt.almacen.GestorInventario;
+import tnt.perfil.Administrador;
 import tnt.perfil.Cajero;
 import tnt.perfil.Perfil;
 
@@ -72,12 +73,14 @@ public class EDPerfilController implements Initializable {
         String user = this.tfUsuario.getText().strip();
         String password = this.tfPassword.getText();
 
-        Cajero cajero = new Cajero(name, user, password);
+        Perfil persona = index != 0 
+                ? new Cajero(name, user, password)
+                : new Administrador(name, user, password);
 
         if (!(name.isBlank()
                 || user.isBlank()
                 || password.isBlank())) {
-            inventario.inventarioPerfil.update(cajero, index);
+            inventario.inventarioPerfil.update(persona, index);
 
             Stage myStage = (Stage) this.btnIngresar.getScene().getWindow();
             myStage.close();

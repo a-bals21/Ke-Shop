@@ -7,7 +7,7 @@ package tnt.perfil;
 import java.io.Serializable;
 
 /**
- *
+ * Perfil orientado al Cajero del sistema
  * @author Angel Balderas
  */
 public class Cajero extends Perfil implements Serializable{

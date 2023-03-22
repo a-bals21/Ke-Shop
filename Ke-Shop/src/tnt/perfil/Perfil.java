@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /**
- *
+ * Simboliza el resgistro del usuario para poder acceder al sistema
  * @author Angel Balderas
  */
 public class Perfil implements Serializable {

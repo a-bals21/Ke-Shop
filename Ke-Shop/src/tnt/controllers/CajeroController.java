@@ -190,11 +190,11 @@ public class CajeroController implements Initializable {
 
             alerta.showAndWait();
             if (alerta.getResult().equals(ButtonType.OK)) {
+                cajero.cerrarVenta(pago);
+                
                 this.pago = 0d;
                 this.lPago.setText("0000.00");
                 this.lCambio.setText("0000.00");
-
-                cajero.cerrarVenta(pago);
 
                 actualizarTabla();
             }

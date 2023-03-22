@@ -7,7 +7,7 @@ package tnt.perfil;
 import java.io.Serializable;
 
 /**
- *
+ * Perfil orientado a los clientes
  * @author Angel Balderas
  */
 public class Cliente extends Perfil implements Serializable{

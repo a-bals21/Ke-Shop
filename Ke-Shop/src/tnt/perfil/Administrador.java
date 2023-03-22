@@ -7,7 +7,7 @@ package tnt.perfil;
 import java.io.Serializable;
 
 /**
- *
+ * Perfil orientado al Administrador del sistema
  * @author Angel Balderas
  */
 public class Administrador extends Perfil implements Serializable {

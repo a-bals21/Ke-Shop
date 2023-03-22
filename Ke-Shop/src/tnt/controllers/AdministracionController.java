@@ -364,7 +364,7 @@ public class AdministracionController implements Initializable {
                     Stage stage = new Stage();
 
                     stage.setScene(escena);
-                    stage.setTitle("Crear Cajero");
+                    stage.setTitle("Editar Perfil");
 
                     stage.show();
 
@@ -394,7 +394,7 @@ public class AdministracionController implements Initializable {
                     Stage stage = new Stage();
 
                     stage.setScene(escena);
-                    stage.setTitle("Nuevo Producto");
+                    stage.setTitle("Editar Producto");
 
                     stage.show();
 
