@@ -12,7 +12,7 @@ Trabajo Escolar. Programa que tiene la función de ser un pequeño sistema de ca
 * JavaFX SDK 18.0.2
 * Persistencia de información en forma de Object en archivos
 * Creación de un perfil Administrador por defecto (admin-user, 201980)
-* Adición y edición de cajeros
+* Adición y edición de perfiles
 * Adición y edición de productos
 * Funciones de cajero
   * Añadir productos
